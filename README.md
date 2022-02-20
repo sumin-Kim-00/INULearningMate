@@ -1,4 +1,4 @@
 # INULearningMate
 
-살짝 연습한거 브랜치 추가해봤어.. 연습하는 부분은 브랜치 추가하면 좋을 것 같아<br>
-> https://github.com/sumin-Kim-00/INULearningMate/tree/practice
+2022.02.21 - form 태그 사용해서 post 방식 request 처리 연습... 채팅용으로 html 하나만 쓰던데 이 방식 어떻게 활용해보면 될듯..?
+test 파일 추가하고 url view.home 부분만 수정함
