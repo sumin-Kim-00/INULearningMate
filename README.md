@@ -11,3 +11,4 @@
 ###### 다영 )
 * lms 로그인 간단하게 구현했어 
 * login.html에 로그인 페이지 있고, views의 login에 로그인 함수 정의되어 있어
+* 현재 상태에서는 form에서 입력받은거 selenium으로 넘겨서 로그인 시도하고, 성공 여부과 관계없이 chathome.html으로 넘어감 
