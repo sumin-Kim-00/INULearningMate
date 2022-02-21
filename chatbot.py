@@ -43,14 +43,14 @@ DIALOGFLOW_PROJECT_ID = 'newagent-ocwf'
 DIALOGFLOW_LANGUAGE_CODE = 'ko'
 # 같은 세션인지 확인하는 용도, 아무 스트링이면 ok
 SESSION_ID = 'mm'
-# 챗봇 돌릴 텍스트들
-TEXTS = ["알고리즘 이번 과제 몇점이야?", "지능정보시스템 강의 출석 현황 알려줘", "컴퓨터네트워크 출석 알려줘", "제출한 강의 알려줘", "안녕", "폴백 유도 텍스트"]
+# 챗봇 돌릴 텍스트
+# TEXTS = ["알고리즘 이번 과제 몇점이야?", "지능정보시스템 강의 출석 현황 알려줘", "컴퓨터네트워크 출석 알려줘", "제출한 강의 알려줘", "안녕", "폴백 유도 텍스트"]
 
 
 # In[ ]:
 
 
-def detect_intent_texts(crawler, project_id, session_id, texts, language_code):
+def detect_intent_texts(crawler, project_id, session_id, texts, language_code, year, semester, names):
     """Returns the result of detect intent with texts as inputs.
     Using the same `session_id` between requests allows continuation
     of the conversation."""

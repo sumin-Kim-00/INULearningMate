@@ -56,14 +56,18 @@
 <div style="height:450px;margin-top:50px;background-color:#BBCCDD;" id="chatbox"></div>
 <div class="chatfooter">
     <table width="100%">
+        <form action="{% url 'chat'%}" method="POST">
+            {% csrf_token %}
         <tr>
             <td width="85%" align="left">
-                <input type="text" id="chattext" style="padding:10px 0;width:100%;border:solid 0px #FFF">
+                <input type="text" id="chattext" name="chatinput" style="padding:10px 0;width:100%;border:solid 0px #FFF">
+
             </td>
             <td width="15%" align="right">
                 <button style="padding:10px 0;width:100%;" onclick="sendAsk()">SEND</button>
             </td>
         </tr>
+        </form>
     </table>
 
 </div>
