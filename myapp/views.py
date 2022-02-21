@@ -43,6 +43,19 @@ def login(request):
     user = username
     pw = password
 
+    if c.login(user, pw):
+        year = '2021'
+        semester = '2'
+
+        names = c.find_course(year, semester)
+        print(names)
+        print()
+        return render(request, 'chathome.html', context)
+
+    else:
+        return HttpResponse("Login failed.", status=400)
+
+"""
     c.login(user, pw)
 
     #year = input('연도 : ')
@@ -55,7 +68,7 @@ def login(request):
     print(names)
     print()
     return render(request, 'chathome.html', context)
-
+"""
 
 """
 def index(request):
