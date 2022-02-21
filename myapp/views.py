@@ -55,20 +55,7 @@ def login(request):
     else:
         return HttpResponse("Login failed.", status=400)
 
-"""
-    c.login(user, pw)
 
-    #year = input('연도 : ')
-    #semester = input('학기 : ')
-
-    year = '2021'
-    semester = '2'
-
-    names = c.find_course(year, semester)
-    print(names)
-    print()
-    return render(request, 'chathome.html', context)
-"""
 
 """
 def index(request):
