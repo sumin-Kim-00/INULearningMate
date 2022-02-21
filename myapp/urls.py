@@ -4,7 +4,8 @@ from myapp import views
 
 urlpatterns = [
     path('', views.home),
-    path('result', views.result, name='result')
+    path('result', views.result, name='result'),
+    path('login', views.login, name='login')
     #path('create/', views.create),
     #path('read/<id>/', views.read)
 ]
