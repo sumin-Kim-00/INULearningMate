@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>INULearningMate</title>
+
+</head>
+
+<body style="height:100%;background-color:#BBCCDD;">
+<center>
+<div style="height:450px;width:300px;margin-top:200px;padding:10px;background-color:#ffd700;border-radius:3px;" id="loginbox">
+    <br><br><br>
+    <h2>INULearningMate</h2>
+    <form action="{% url 'login'%}" method="POST">
+        {% csrf_token %}
+        ID: <input name="username" placeholder="" type="text"/>
+        <br>
+        PW: <input name="password" placeholder="" type="password"/>
+        <br>
+        <br>
+        <button type="submit">로그인</button>
+    </form>
+</div>
+</center>
+</body>
+</html>

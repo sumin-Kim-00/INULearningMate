@@ -5,19 +5,8 @@ from django.shortcuts import render, HttpResponse
 def home(request):
     context = {}
 
-    return render(request, "test.html", context)
+    return render(request, "chathome.html", context)
 
-def result(request):
-    context = {}
-    name = request.POST['username']
-    students = ['amy', 'bob', 'catherine', 'dennis', 'ethan']
-
-    if name in students:
-        is_exist = True
-    else:
-        is_exist = False
-
-    return render(request, 'test.html', {'user_name': name, 'is_exist': is_exist})
 
 
 """

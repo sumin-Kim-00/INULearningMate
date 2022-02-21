@@ -121,7 +121,7 @@ def detect_intent_texts(crawler, project_id, session_id, texts, language_code):
 
 # In[ ]:
 
-
+'''
 options = webdriver.ChromeOptions()
 options.add_experimental_option("excludeSwitches", ["enable-logging"])
 d = webdriver.Chrome(options=options)
@@ -149,3 +149,4 @@ detect_intent_texts(c, DIALOGFLOW_PROJECT_ID, SESSION_ID, TEXTS, DIALOGFLOW_LANG
 
 
 # In[ ]:
+'''
