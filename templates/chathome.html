@@ -16,7 +16,7 @@
         addtext = "<div style='margin:15px 0;text-align:right;'> <span style='padding:3px 10px;background-color:#3388cc;border-radius:3px;'>" + ctext + "</span></div>";
         document.getElementById("chatbox").innerHTML += addtext;
 
-        bottext = "<div style='margin:15px 0;text-align:left;'> <span style='padding:3px 10px;background-color:#ffd700;border-radius:3px;'>INU 챗봇입니다.</span></div>";
+        bottext = "<div style='margin:15px 0;text-align:left;'> <span style='padding:3px 10px;background-color:#ffd700;border-radius:3px;'>{{chatanswer}}</span></div>";
         document.getElementById("chatbox").innerHTML += bottext;
     }
 
@@ -51,13 +51,17 @@
 
 </head>
 <body style="height:100%;background-color:#BBCCDD;">
-
 <div class="chatheader">INULearningMate</div>
 <div style="height:450px;margin-top:50px;background-color:#BBCCDD;" id="chatbox"></div>
+    {% if username %}
+        {{chatanswer}}
+    {% endif %}
 <div class="chatfooter">
     <table width="100%">
         <form action="{% url 'chat'%}" method="POST">
             {% csrf_token %}
+            <input type="hidden" id="username" name="username" value={{username}}>
+            <input type="hidden" id="password" name="password" value={{password}}>
         <tr>
             <td width="85%" align="left">
                 <input type="text" id="chattext" name="chatinput" style="padding:10px 0;width:100%;border:solid 0px #FFF">

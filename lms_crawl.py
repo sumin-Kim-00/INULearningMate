@@ -46,13 +46,13 @@ class Lms_crawl:
     
     def print_table(self, table, ttype):
         if ttype == 'c':
-            print(tabulate(table, headers=["주차", "강의 자료", "총 학습시간", "열람 횟수", "출석", "주차 출석"]))
+            return(tabulate(table, headers=["주차", "강의 자료", "총 학습시간", "열람 횟수", "출석", "주차 출석"]))
         elif ttype == 'a':
-            print(tabulate(table, headers=["주", "과제", "종료 일시", "제출", "성적"]))
+            return(tabulate(table, headers=["주", "과제", "종료 일시", "제출", "성적"]))
         elif ttype == 'g':
-            print(tabulate(table, headers=["성적항목", "성적", "석차", "평균", "피드백"]))
+            return(tabulate(table, headers=["성적항목", "성적", "석차", "평균", "피드백"]))
         else:
-            print('잘못된 형식입니다.')
+            return('잘못된 형식입니다.')
         
     
     def not_checked(self, table):
