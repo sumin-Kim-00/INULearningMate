@@ -22,9 +22,7 @@
     }
 
     var csrftoken = getCookie('csrftoken');
-
     var xhr;
-
 
     function sendAsk() {
         ctext = document.getElementById("chattext").value;
@@ -46,7 +44,6 @@
                 var obj = JSON.parse(data);
 
                 if(obj.flag == "0"){
-
                     bottext = "<div style='margin:15px 0;text-align:left;'><span style='padding:3px 10px;background-color:#DDD;border-radius:3px;'>" + obj.chatanswer + "</span></div>";
                     document.getElementById("chatbox").innerHTML += bottext;
 
@@ -55,12 +52,10 @@
 
                     document.getElementById("chattext").value = "";
                     document.getElementById("chattext").focus();
-
                 }
-
             }
-
         };
+
         xhr.open("GET", strurl);
         xhr.setRequestHeader("X-CSRFToken", csrftoken);
         xhr.send(null);
