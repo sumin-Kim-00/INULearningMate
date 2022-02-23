@@ -12,6 +12,13 @@
         let firstMessage = "INULearningMate입니다! 무엇을 도와드릴까요?"
         document.getElementById("chatbox").innerHTML
         += "<div style='margin:15px 0;text-align:left;'> <span style='padding:3px 10px;background-color:#ffd700;border-radius:3px;'>"+firstMessage+"</span></div>";
+
+        let course_name ="<div style='margin:15px 0;text-align:left;'><span style='padding:3px 10px;background-color:#ffd700;border-radius:3px;'>&lt;현재 수강 중인 과목&gt;<br> {{courses}}</span></div>";
+        course_name = course_name.replace(/\]/g,"");
+        course_name = course_name.replace(/\[/g,"");
+
+        document.getElementById("chatbox").innerHTML += course_name
+
     }
 
     $(document).ready(function() {
@@ -58,6 +65,7 @@
                 var obj = JSON.parse(data);
 
                 if(obj.flag == "0"){
+
                     bottext = "<div style='margin:15px 0;text-align:left;'><span style='padding:3px 10px;background-color:#ffd700;border-radius:3px;'>" + obj.chatanswer + "</span></div>";
                     document.getElementById("chatbox").innerHTML += bottext;
 

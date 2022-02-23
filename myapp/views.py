@@ -84,7 +84,7 @@ def login(request):
         print(names)
         print()
         context['courses'] = names
-
+        print(context)
         return render(request, 'chathome.html', context)
 
     # 로그인 실패시 알림 띄우고 다시 로그인 창으로 돌아감
@@ -121,6 +121,7 @@ def chat(request):
         'username': user,
         'password': pw,
         'chatanswer': chatanswer,
+        'course': names,
         'flag': '0'
     }
 
