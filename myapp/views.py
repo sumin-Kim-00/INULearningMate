@@ -1,4 +1,3 @@
-from django.http import JsonResponse
 from django.shortcuts import render, HttpResponse
 from django.contrib import messages
 
@@ -104,7 +103,7 @@ def chat(request):
     c.login(user, pw)
 
     chat = []
-    chatinput = request.GET['chatinput']
+    chatinput = request.POST['chatinput']
     chat.append(chatinput)
 
     print(chat)
@@ -120,12 +119,10 @@ def chat(request):
     context = {
         'username': user,
         'password': pw,
-        'chatanswer': chatanswer,
-        'flag': '0'
+        'chatanswer': chatanswer
     }
 
-    return JsonResponse(context, content_type="application/json")
-    # return render(request, 'chathome.html', context)
+    return render(request, 'chathome.html', context)
 
 """
 def index(request):

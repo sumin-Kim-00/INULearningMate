@@ -11,7 +11,6 @@ import requests
 from tabulate import tabulate
 
 
-# In[ ]:
 
 
 class Lms_crawl:
