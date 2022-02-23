@@ -24,22 +24,20 @@ DIALOGFLOW_LANGUAGE_CODE = 'ko'
 # 같은 세션인지 확인하는 용도, 아무 스트링이면 ok
 SESSION_ID = 'mm'
 
-year = '2021'
-semester = '2'
 
+# 이렇게 하면 클라이언트 하나만 접속 가능해서 조치 취해야 함..
 options = webdriver.ChromeOptions()
 options.add_experimental_option("excludeSwitches", ["enable-logging"])
-options.add_argument('headless')
-options.add_argument('window-size=1920x1080')
-options.add_argument("disable-gpu")
+d = webdriver.Chrome(options=options)
+
+c = Lms_crawl(d)
+
+year = '2021'
+semester = '2'
 
 
 def home(request):
     context = {}
-
-    print(request.session.session_key)
-    request.session['username'] = 'user'
-    request.session['password'] = 'pw'
 
     return render(request, "login.html", context)
 
@@ -56,23 +54,13 @@ def result(request):
     return render(request, 'test.html', {'user_name': name, 'is_exist': is_exist})
 
 def login(request):
-    d = webdriver.Chrome(options=options)
-
-    c = Lms_crawl(d)
+    context = {}
 
     username = request.POST['username']
     password = request.POST['password']
 
-    request.session['username'] = username
-    request.session['password'] = password
-
-    user = request.session['username']
-    pw = request.session['password']
-
-    context = {
-        'username': user,
-        'password': pw
-    }
+    user = username
+    pw = password
 
     c.login(user, pw)
 
@@ -91,15 +79,7 @@ def login(request):
 
 
 def chat(request):
-    d = webdriver.Chrome(options=options)
-
-    c = Lms_crawl(d)
-
-    user = request.session['username']
-    pw = request.session['password']
-
-    c.login(user, pw)
-
+    context = {}
     chat = []
     chatinput = request.POST['chatinput']
     chat.append(chatinput)
@@ -109,16 +89,7 @@ def chat(request):
     names = c.find_course(year, semester)
     print(names)
 
-    chat = chatbot.detect_intent_texts(c, DIALOGFLOW_PROJECT_ID, SESSION_ID, chat, DIALOGFLOW_LANGUAGE_CODE, year, semester, names)
-
-    chatanswer = chat
-    print(chatanswer)
-
-    context = {
-        'username': user,
-        'password': pw,
-        'chatanswer': chatanswer
-    }
+    chatbot.detect_intent_texts(c, DIALOGFLOW_PROJECT_ID, SESSION_ID, chat, DIALOGFLOW_LANGUAGE_CODE, year, semester, names)
 
     return render(request, 'chathome.html', context)
 
