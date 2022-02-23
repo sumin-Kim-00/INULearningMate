@@ -3,8 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>INULearningMate</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     {% block scripts %}
     <script>
+
+    function firstBotMessage() {
+        let firstMessage = "INULearningMate입니다! 무엇을 도와드릴까요?"
+        document.getElementById("chatbox").innerHTML
+        += "<div style='margin:15px 0;text-align:left;'> <span style='padding:3px 10px;background-color:#ffd700;border-radius:3px;'>"+firstMessage+"</span></div>";
+    }
+
+    $(document).ready(function() {
+        firstBotMessage();
+    });
+
+
     function getCookie(name) {
         var cookieValue = null;
         if (document.cookie && document.cookie !== '') {
