@@ -120,14 +120,14 @@ def chat(request):
         'username': user,
         'password': pw,
         'chatanswer': chatanswer,
-        'course': names,
+        'courses': names,
         'flag': '0'
     }
 
     return JsonResponse(context, content_type="application/json")
 
 """
-def index(request):
+def index.html(request):
     return HttpResponse('<h1>Random</h1>' + str(random.random()))  # Http를 이용해서 응답
 
 def create(request):

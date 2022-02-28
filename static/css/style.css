@@ -1,0 +1,21 @@
+.chatheader {
+    position:fixed;
+    left:0;
+    top:0;
+    width:100%;
+    padding:10px 0;
+    background-color:#DDD;
+    color:#000;
+    text-align:center;
+}
+
+.chatfooter {
+    position:fixed;
+    left:0;
+    bottom:0;
+    width:100%;
+    padding:10px 0;
+    background-color:#FFF;
+    color:#000;
+    text-align:center;
+}
