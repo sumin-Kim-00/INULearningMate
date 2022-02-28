@@ -1,4 +1,67 @@
-.chatheader {
+/* login.html */
+.loginBox{
+    height:450px;
+    width:300px;
+    margin-top:200px;
+    padding:10px;
+    background-color:#ffd700;
+    border-radius:3px;
+}
+
+
+/* chathome.html */
+.chatBody {
+    height:100%;
+    background-color:#BBCCDD;
+}
+
+.chatBox {
+    height:450px;
+    margin-top:50px;
+    background-color:#BBCCDD;
+}
+
+
+/* chat input box */
+.chatInput {
+    padding:10px 0;
+    width:100%;
+    border:solid 0px #FFF
+}
+
+.chatSendButton{
+    padding:10px 0;
+    width:100%;
+}
+
+
+/* chats */
+.chatBot{
+    margin:15px 0;
+    text-align:left;
+    float: left;
+}
+
+.chatBotSpan{
+    padding:3px 10px;
+    background-color:
+    #ffd700;border-radius:3px;
+}
+
+.chatMe{
+    margin:15px 0;
+    text-align:right;
+}
+
+.chatMeSpan{
+    padding:3px 10px;
+    background-color:#3388cc;
+    border-radius:3px;
+}
+
+
+/* chat header and footer*/
+.chatHeader {
     position:fixed;
     left:0;
     top:0;
@@ -9,7 +72,7 @@
     text-align:center;
 }
 
-.chatfooter {
+.chatFooter {
     position:fixed;
     left:0;
     bottom:0;

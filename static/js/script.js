@@ -28,7 +28,7 @@ function sendAsk() {
         return false;
     }
 
-    addtext = "<div style='margin:15px 0;text-align:right;'> <span style='padding:3px 10px;background-color:#3388cc;border-radius:3px;'>" + ctext + "</span></div>";
+    addtext = "<div class='chatMe'> <span class='chatMeSpan'>" + ctext + "</span></div>";
     document.getElementById("chatbox").innerHTML += addtext;
 
     var strurl = "chat?chatinput=" + ctext;
@@ -42,7 +42,7 @@ function sendAsk() {
 
             if(obj.flag == "0"){
 
-                bottext = "<div style='margin:15px 0;text-align:left;'><span style='padding:3px 10px;background-color:#ffd700;border-radius:3px;'>" + obj.chatanswer + "</span></div>";
+                bottext = "<div class='chatBot'><span class='chatBotSpan'>" + obj.chatanswer + "</span></div>";
                 document.getElementById("chatbox").innerHTML += bottext;
 
                 var objDiv = document.getElementById("chatbox");
