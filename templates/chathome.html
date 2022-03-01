@@ -6,7 +6,8 @@
     <title>INULearningMate</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="{% static 'css/style_chat.css' %}">
     <script type="text/javascript" src="/static/js/script.js"></script>
 
     {% block scripts %}
@@ -29,27 +30,22 @@
 
 </head>
 <body>
-<div class="chatBody">
-<div class="chatHeader">INULearningMate</div>
-<div class="chatBox" id="chatbox"></div>
-<div class="chatFooter">
-    <table width="100%">
+    <div class="chatBody">
+        <div class="chatHeader">INULearningMate</div>
+
+        <div class="chatBox" id="chatbox"></div>
+
+        <div class="chatFooter">
             {% csrf_token %}
             <input type="hidden" id="username" name="username" value={{username}}>
             <input type="hidden" id="password" name="password" value={{password}}>
-        <tr>
-            <td width="85%" align="left">
-                <input type="text" id="chattext" name="chatinput" class="inputText">
 
-            </td>
-            <td width="15%" align="right">
-                <button class="buttonSend" onclick="sendAsk()">SEND</button>
-            </td>
-        </tr>
-    </table>
-
-</div>
-</div>
+            <div class="inputArea">
+                <input type="text" id="chattext" name="chatinput" placeholder="메시지를 입력하세요" >
+                <button onclick="sendAsk()">SEND</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
 

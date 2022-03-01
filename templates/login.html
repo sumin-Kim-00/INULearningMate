@@ -3,29 +3,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style_login.css' %}">
     <title>INULearningMate</title>
 </head>
 
 <body>
 <div class="loginBody">
-<center>
-<div class="loginBox" id="loginbox">
-    <br><br><br>
-    <h2>INULearningMate</h2>
-    <form action="{% url 'login'%}" method="POST">
-        {% csrf_token %}
-        ID: <input name="username" placeholder="" type="text"/>
-        <br>
-        PW: <input name="password" placeholder="" type="password"/>
-        <br>
-        <br>
-        <button type="submit">로그인</button>
-	<br><br>
-        <a class="loginfind" href="https://portal.inu.ac.kr:444/enview/">아이디/ 비밀번호 찾기</a>
-    </form>
-</div>
-</center>
+    <div class="loginBox" id="loginbox">
+        <h2>INULearningMate</h2>
+        <br><br>
+        <form action="{% url 'login'%}" method="POST">
+            {% csrf_token %}
+            <div class="inputIdPw">
+                <div class="text"> ID: </div>
+                <input name="username" placeholder="" type="text"/>
+                <br><br>
+                <div class="text"> PW: </div>
+                <input name="password" placeholder="" type="password"/>
+                <br>
+                <br>
+                <button type="submit">로그인</button>
+            </div>
+            <br>
+            <br>
+            <a class="loginFind" href="https://portal.inu.ac.kr:444/enview/">아이디/ 비밀번호 찾기</a>
+        </form>
+    </div>
 </div>
 </body>
 {% if messages %}

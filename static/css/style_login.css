@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body{
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color:gray;
+}
+
+
+/* login body - screen */
+.loginBody {
+    min-width: 670px;
+    max-width: 670px;
+    min-height: 900px;
+    max-height: 900px;
+    border: 5px dashed #007bff;
+    background-color:white;
+    padding: 120px;
+    border-radius: 5px;
+
+}
+
+
+/* login box - inner box*/
+.loginBox {
+    padding: 80px 60px;
+    width: 100%;
+    height: 500px;
+    border-radius:20px;
+    background: #007bff;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+
+}
+
+/* login typing part */
+.loginBody .inputIdPw {
+    width: 100%;
+    position: relative;
+
+}
+
+/* login typing part - text*/
+.loginBody .inputIdPw .text {
+    background-color: white;
+    padding: 5px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    outline: none;
+    display: grid;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    color: #007bff;
+    text-align: center;
+    float:left;
+    display:inline;
+    width: 15%;
+}
+
+/* login typing part - input*/
+.loginBody .inputIdPw input {
+    padding: 5px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    transition: 0.3s all ease;
+    float:right;
+    display:inline;
+    width: 80%;
+}
+
+.loginBody .loginBox .inputIdPw input:hover {
+    border-color: #007bff;
+}
+
+.loginBody .loginBox .inputIdPw input:focus {
+    border-color: #007bff;
+}
+
+
+/* login typing part - button */
+.loginBody .loginBox .inputIdPw button {
+    background: white;
+    border: 1px solid #007bff;
+    padding: 5px 20px;
+    border-radius: 3px;
+    color: #007bff;
+    outline: none;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s all ease;
+    font-size: 20px;
+}
+
+.loginBody .loginBox button:hover {
+    border: 1px solid white;
+    background: #007bff;
+    color: white;
+}
+
+.loginBody .loginBox input:valid ~ button {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.loginBody .loginBox .loginFind {
+    color: white;
+    font-size: 15px;
+}
