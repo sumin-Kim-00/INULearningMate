@@ -1,14 +1,16 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>INULearningMate</title>
-
 </head>
 
-<body style="height:100%;background-color:#BBCCDD;">
+<body>
+<div class="loginBody">
 <center>
-<div style="height:450px;width:300px;margin-top:200px;padding:10px;background-color:#ffd700;border-radius:3px;" id="loginbox">
+<div class="loginBox" id="loginbox">
     <br><br><br>
     <h2>INULearningMate</h2>
     <form action="{% url 'login'%}" method="POST">
@@ -19,12 +21,12 @@
         <br>
         <br>
         <button type="submit">로그인</button>
-	<br>
+	<br><br>
         <a class="loginfind" href="https://portal.inu.ac.kr:444/enview/">아이디/ 비밀번호 찾기</a>
     </form>
 </div>
 </center>
-
+</div>
 </body>
 {% if messages %}
 	{% for message in messages %}

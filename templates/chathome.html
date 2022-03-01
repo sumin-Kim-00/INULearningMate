@@ -14,9 +14,9 @@
     function firstBotMessage() {
         let firstMessage = "INULearningMate입니다! 무엇을 도와드릴까요?"
         document.getElementById("chatbox").innerHTML
-        += "<div style='margin:15px 0;text-align:left;'> <span style='display:inline-block;padding:3px 10px;background-color:#ffd700;border-radius:3px;'>"+firstMessage+"</span></div>";
+        += "<div class='chatBot'> <span>"+firstMessage+"</span></div>";
 
-        let course_name ="<div style='margin:15px 0;text-align:left;'><span style='display:inline-block;padding:3px 10px;background-color:#ffd700;border-radius:3px;'>&lt;현재 수강 중인 과목&gt;<br> {{courses}} </span></div>";
+        let course_name ="<div class='chatBot'><span>&lt;현재 수강 중인 과목&gt;<br> {{courses}} </span></div>";
         course_name = course_name.replace(/\]/g,"");
         course_name = course_name.replace(/\[/g,"");
 
@@ -28,27 +28,28 @@
 
 
 </head>
-<body style="height:100%;background-color:#BBCCDD;">
-<div class="chatheader">INULearningMate</div>
-<div style="height:450px;margin-top:50px;background-color:#BBCCDD;" id="chatbox"></div>
-<div class="chatfooter">
+<body>
+<div class="chatBody">
+<div class="chatHeader">INULearningMate</div>
+<div class="chatBox" id="chatbox"></div>
+<div class="chatFooter">
     <table width="100%">
             {% csrf_token %}
             <input type="hidden" id="username" name="username" value={{username}}>
             <input type="hidden" id="password" name="password" value={{password}}>
         <tr>
             <td width="85%" align="left">
-                <input type="text" id="chattext" name="chatinput" style="padding:10px 0;width:100%;border:solid 0px #FFF">
+                <input type="text" id="chattext" name="chatinput" class="inputText">
 
             </td>
             <td width="15%" align="right">
-                <button style="padding:10px 0;width:100%;" onclick="sendAsk()">SEND</button>
+                <button class="buttonSend" onclick="sendAsk()">SEND</button>
             </td>
         </tr>
     </table>
 
 </div>
-
+</div>
 </body>
 </html>
 
