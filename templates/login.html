@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>INULearningMate</title>
+
 </head>
 
-<body class="chatBody">
+<body style="height:100%;background-color:#BBCCDD;">
 <center>
-<div class="loginBox" id="loginbox">
+<div style="height:450px;width:300px;margin-top:200px;padding:10px;background-color:#ffd700;border-radius:3px;" id="loginbox">
     <br><br><br>
     <h2>INULearningMate</h2>
     <form action="{% url 'login'%}" method="POST">
