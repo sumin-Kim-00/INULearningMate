@@ -114,7 +114,7 @@ def chat(request):
     chat = chatbot.detect_intent_texts(c, DIALOGFLOW_PROJECT_ID, SESSION_ID, chat, DIALOGFLOW_LANGUAGE_CODE, year, semester, names)
 
     chatanswer = chat
-    print(chatanswer)
+    # print(chatanswer)
 
     context = {
         'username': user,

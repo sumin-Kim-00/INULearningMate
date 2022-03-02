@@ -2,6 +2,19 @@ $(document).ready(function() {
     firstBotMessage();
 });
 
+
+function replaceEnter(str)
+{
+    if (str == undefined || str == null) return "";
+
+    str = str.replace(/\r\n/ig, '<br>');
+    str = str.replace(/\\n/ig, '<br>');
+    str = str.replace(/\n/ig, '<br>');
+    return str
+}
+
+
+
 function getCookie(name) {
     var cookieValue = null;
     if (document.cookie && document.cookie !== '') {
@@ -41,8 +54,8 @@ function sendAsk() {
             var obj = JSON.parse(data);
 
             if(obj.flag == "0"){
-
-                bottext = "<div class='chatBot'><span>" + obj.chatanswer + "</span></div>";
+                ans = replaceEnter(obj.chatanswer)
+                bottext = "<div class='chatBot'><span>" + ans + "</span></div>";
                 document.getElementById("chatbox").innerHTML += bottext;
 
                 var objDiv = document.getElementById("chatbox");

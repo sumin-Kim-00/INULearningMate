@@ -68,9 +68,9 @@ body{
     display:inline-block;
     padding:3px 10px;
     background-color:#007bff;
-    border-radius:10px;
+    border-radius: 0 20px 20px 20px;
     color:white;
-    max-width:350px;
+
 }
 
 .chatBody .chatBox .chatMe {
@@ -83,8 +83,8 @@ body{
     padding:3px 10px;
     background-color:#efefef;
     color:#333;
-    border-radius:10px;
-    max-width:350px;
+    border-radius: 20px 0 20px 20px;
+    /*max-width:350px;*/
 }
 
 
