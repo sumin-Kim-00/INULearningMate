@@ -91,39 +91,29 @@ def detect_intent_texts(crawler, project_id, session_id, texts, language_code, y
         if ftext == "강의":
             print("답장 :", ftext)
             table = crawler.course_check(course_name, year, semester)
-            print('<'+ course_name +'>')
-            print(crawler.print_table(table, 'c'))
-            print()
             crawler.not_checked(table)
-            print()
-            print()
             result = ""
             result += '<'+ course_name +'><br>'
             result += crawler.print_table(table, 'c')
+            print(result)
             return result
             
         elif ftext == "과제":
             print("답장 :", ftext)
             table = crawler.assign_check(course_name, year, semester)
-            print('<'+ course_name +'>')
-            print(crawler.print_table(table, 'a'))
-            print()
-            print()
             result = ""
             result += '<' + course_name + '><br>'
             result += crawler.print_table(table, 'a')
+            print(result)
             return result
                 
         elif ftext == "성적":
             print("답장 :", ftext)
             table = crawler.grade_check(course_name, year, semester)
-            print('<'+ course_name +'><br>')
-            print(crawler.print_table(table, 'g'))
-            print()
-            print()
             result = ""
             result += '<' + course_name + '><br>'
             result += crawler.print_table(table, 'g')
+            print(result)
             return result
             
         else:

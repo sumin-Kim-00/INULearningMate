@@ -6,22 +6,47 @@
 </head>
 <body>
 
-<h1>학생 이름을 입력해보세요!</h1>
-<form action="{% url 'result'%}" method="POST">
-    {% csrf_token %}
-    <input name="username" placeholder="이름"/>
-    <br/>
-    <br/>
-    <button type="submit">체크하기</button>
-</form>
-
-
-<h1>결과</h1>
-    {% if is_exist %}
-        {{user_name}}은 있어요!
-    {% else %}
-        {{user_name}}은 없어요!
-    {% endif %}
+    <컴퓨터네트워크>
+    <table>
+    <thead>
+    <tr><th>주차  </th><th>강의 자료                  </th><th>총 학습시간  </th><th> 
+    열람 횟수  </th><th>출석  </th><th>주차 출석  </th></tr>
+    </thead>
+    <tbody>
+    <tr><td>1   </td><td>강의계획서 동영상              </td><td>28:47   </td><td>4회 
+    열람  </td><td>O   </td><td>O      </td></tr>
+    <tr><td>2   </td><td>제1장 컴퓨터네트워크와 인터넷(1) 동영상</td><td>01:07:43</td><td>4회 열람  </td><td>O   </td><td>O      </td></tr>
+    <tr><td>3   </td><td>제1장 컴퓨터네트워크와인터넷(2) 동영상 </td><td>41:33   </td><td>2회 열람  </td><td>O   </td><td>O      </td></tr>
+    <tr><td>    </td><td>제1장 컴퓨터네트워크와인터넷(3) 동영상 </td><td>38:18   </td><td>2회 열람  </td><td>O   </td><td>       </td></tr>
+    <tr><td>4   </td><td>                       </td><td>        </td><td>       </td><td>    </td><td>       </td></tr>
+    <tr><td>5   </td><td>제2장 응용계층(1) 동영상        </td><td>01:14:35</td><td>2회
+     열람  </td><td>O   </td><td>O      </td></tr>
+    <tr><td>6   </td><td>제2장 응용계층(2) 동영상        </td><td>59:26   </td><td>3회
+     열람  </td><td>O   </td><td>O      </td></tr>
+    <tr><td>7   </td><td>실습 1 동영상               </td><td>20:34   </td><td>3회 열 
+    람  </td><td>O   </td><td>O      </td></tr>
+    <tr><td>    </td><td>실습2 동영상                </td><td>06:07   </td><td>2회 열 
+    람  </td><td>O   </td><td>       </td></tr>
+    <tr><td>    </td><td>제2장 응용계층(3) 동영상        </td><td>49:44   </td><td>3회
+     열람  </td><td>O   </td><td>       </td></tr>
+    <tr><td>8   </td><td>실습3 동영상                </td><td>18:55   </td><td>10회 열
+    람 </td><td>O   </td><td>O      </td></tr>
+    <tr><td>9   </td><td>제3장 전송계층(1) 동영상        </td><td>57:03   </td><td>2회
+     열람  </td><td>O   </td><td>O      </td></tr>
+    <tr><td>10  </td><td>제3장 전송계층(2) 동영상        </td><td>01:06:17</td><td>2회
+     열람  </td><td>O   </td><td>O      </td></tr>
+    <tr><td>11  </td><td>제3장 전송계층(3) 동영상        </td><td>01:15:16</td><td>4회
+     열람  </td><td>O   </td><td>O      </td></tr>
+    <tr><td>12  </td><td>실습4 동영상                </td><td>19:03   </td><td>4회 열 
+    람  </td><td>O   </td><td>O      </td></tr>
+    <tr><td>    </td><td>제3장 전송계층(4) 동영상        </td><td>58:39   </td><td>3회
+     열람  </td><td>O   </td><td>       </td></tr>
+    <tr><td>13  </td><td>제4장 네트워크계층(1) 동영상      </td><td>01:27:13</td><td>2회 열람  </td><td>O   </td><td>O      </td></tr>
+    <tr><td>14  </td><td>제4장 네트워크계층(2) 동영상      </td><td>59:22   </td><td>2회 열람  </td><td>O   </td><td>O      </td></tr>
+    <tr><td>15  </td><td>                       </td><td>        </td><td>       </td><td>    </td><td>       </td></tr>
+    </tbody>
+    </table>
+    모든 강의를 학습하셨습니다.
 
 </body>
 </html>

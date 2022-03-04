@@ -54,9 +54,10 @@ function sendAsk() {
             var obj = JSON.parse(data);
 
             if(obj.flag == "0"){
-                ans = replaceEnter(obj.chatanswer)
+                ans = obj.chatanswer
                 bottext = "<div class='chatBot'><span>" + ans + "</span></div>";
                 document.getElementById("chatbox").innerHTML += bottext;
+
 
                 var objDiv = document.getElementById("chatbox");
                 objDiv.scrollTop = objDiv.scrollHeight;
