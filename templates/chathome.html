@@ -24,6 +24,7 @@
         document.getElementById("chatbox").innerHTML += course_name
 
     }
+
     </script>
     {% endblock %}
 
@@ -42,9 +43,22 @@
 
             <div class="inputArea">
                 <input type="text" id="chattext" name="chatinput" placeholder="메시지를 입력하세요" >
-                <button onclick="sendAsk()">SEND</button>
+                <button onclick="sendAsk()" id="sendbtn">SEND</button>
             </div>
         </div>
     </div>
 </body>
 </html>
+
+
+<script>
+
+var input = document.getElementById("chattext");
+input.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        document.getElementById("sendbtn").click();
+    }
+});
+
+</script>

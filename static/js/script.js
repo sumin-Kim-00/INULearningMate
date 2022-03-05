@@ -73,3 +73,5 @@ function sendAsk() {
     xhr.send(null);
 
 }
+
+

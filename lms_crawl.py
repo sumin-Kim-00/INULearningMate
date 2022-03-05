@@ -47,7 +47,7 @@ class Lms_crawl:
         if ttype == 'c':
             return(tabulate(table, headers=["주차", "강의 자료", "총 학습시간", "열람 횟수", "출석", "주차 출석"], tablefmt="html"))
         elif ttype == 'a':
-            return(tabulate(table, headers=["주", "과제", "종료 일시", "제출", "성적"], tablefmt="html"))
+            return(tabulate(table, headers=["주차", "과제", "종료 일시", "제출", "성적"], tablefmt="html"))
         elif ttype == 'g':
             return(tabulate(table, headers=["성적항목", "성적", "석차", "평균", "피드백"], tablefmt="html"))
         else:
