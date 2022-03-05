@@ -45,6 +45,8 @@ function sendAsk() {
     document.getElementById("chatbox").innerHTML += addtext;
 
     var strurl = "chat?chatinput=" + ctext;
+    var objDiv = document.getElementById("chatbox");
+    objDiv.scrollTop = objDiv.scrollHeight;
 
     xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
