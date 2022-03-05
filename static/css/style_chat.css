@@ -19,9 +19,9 @@ body{
 /* chat body */
 .chatBody {
     min-width: 360px;
-    max-width: 360px;
-    min-height: 640px;
-    max-height: 640px;
+    max-width: 450px;
+    /*min-height: 640px;*/
+    /*max-height: 640px;*/
 }
 
 
@@ -30,11 +30,11 @@ body{
     background-color: white;
     border: 1px solid #efefef;
     padding: 10px 15px;
-    min-height: 540px;
-    max-height: 540px;
+    /*min-height: 540px;
+    max-height: 540px;*/
     overflow-y: auto;
     font-size: 15px;
-
+    height: 85vh;
 }
 
 
@@ -42,7 +42,7 @@ body{
 .chatBody .chatHeader {
     background: #007bff;
     color: white;
-    line-height: 50px;
+    line-height: 8vh;
     border-radius: 5px 5px 0 0;
     text-align: center;
     font-size: 20px;
@@ -52,7 +52,7 @@ body{
     width: 100%;
     background: #efefef;
     border-radius: 0 0 5px 5px ;
-    height: 50px;
+    height: 7vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -100,7 +100,7 @@ body{
 /* chat text input*/
 .chatBody .chatFooter .inputArea input#chattext {
     width: 100%;
-    padding: 10px;
+    /*padding: 10px;*/
     border: 1px solid transparent;
     border-radius: 3px;
     outline: none;
@@ -129,7 +129,7 @@ body{
     transform: translateY(-50%);
     background: transparent;
     border: 1px solid #007bff;
-    padding: 5px 10px;
+    /*padding: 5px 10px;*/
     border-radius: 3px;
     color: #007bff;
     outline: none;

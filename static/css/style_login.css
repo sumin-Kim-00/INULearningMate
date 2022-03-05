@@ -14,19 +14,20 @@ body{
     align-items: center;
     min-height: 100vh;
     background-color:gray;
+    
 }
 
 
 /* login body - screen */
 .loginBody {
-    min-width: 360px;
+    /*min-width: 360px;
     max-width: 360px;
     min-height: 640px;
-    max-height: 640px;
-    /*border: 3px solid #007bff;*/
+    max-height: 640px;*/
     background-color:white;
-    padding: 100px 30px;
+    padding: 100px 40px;
     border-radius: 5px;
+    height: 100vh;
 
 }
 

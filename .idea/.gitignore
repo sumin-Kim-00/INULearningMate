@@ -16,3 +16,4 @@ __pycache__/lms_crawl.cpython-310.pyc
 __pycache__/chatbot.cpython-310.pyc
 .vscode/launch.json
 db.sqlite3
+ngrok.exe
