@@ -103,7 +103,6 @@ body{
     color: #007bff;
     outline: none;
     cursor: pointer;
-    opacity: 0;
     pointer-events: none;
     transition: 0.3s all ease;
     font-size: 15px;
@@ -114,11 +113,6 @@ body{
     border: 1px solid white;
     background: #007bff;
     color: white;
-}
-
-.loginBody .loginBox input:valid ~ button {
-    opacity: 1;
-    pointer-events: auto;
 }
 
 .loginBody .loginBox .loginFind {
