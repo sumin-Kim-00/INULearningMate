@@ -102,8 +102,6 @@ body{
     border-radius: 3px;
     color: #007bff;
     outline: none;
-    cursor: pointer;
-    pointer-events: none;
     transition: 0.3s all ease;
     font-size: 15px;
     margin-top: 10px;
