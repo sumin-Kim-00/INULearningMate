@@ -86,6 +86,8 @@ def detect_intent_texts(crawler, project_id, session_id, texts, language_code, y
         for name in names:
             if name in text:
                 course_name = name
+
+            # else:
         
         
         if ftext == "강의":
