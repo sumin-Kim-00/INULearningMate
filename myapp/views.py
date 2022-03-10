@@ -25,8 +25,8 @@ DIALOGFLOW_LANGUAGE_CODE = 'ko'
 # 같은 세션인지 확인하는 용도, 아무 스트링이면 ok
 SESSION_ID = 'mm'
 
-year = '2021'
-semester = '2'
+year = '2022'
+semester = '1'
 
 options = webdriver.ChromeOptions()
 options.add_experimental_option("excludeSwitches", ["enable-logging"])
