@@ -12,7 +12,3 @@ class App_Session(models.Model):
     # expire_date = models.DateTimeField()
     auto_login = models.BooleanField(default=False)
 
-
-    def __str__(self):
-        """String for representing the MyModelName object (in Admin site etc.)."""
-        return self.field_name

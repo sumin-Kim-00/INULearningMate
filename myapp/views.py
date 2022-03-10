@@ -91,6 +91,9 @@ def login(request):
             app_session.save()
             autologin = True
         else:
+            # App_Session 테이블에 레코드(session key & autologin bool) 추가
+            app_session = App_Session(session_key=key, auto_login=False)
+            app_session.save()
             autologin = False
             
         print("autologin =", autologin)
