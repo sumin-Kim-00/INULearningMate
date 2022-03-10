@@ -190,58 +190,66 @@ class Lms_crawl:
         # 수강 페이지로 이동
         url = 'https://cyber.inu.ac.kr/local/ubion/user/?year=' + year + '&semester=' + semester + '0'
         self.driver.get(url)
+        find = False
 
-        try:
-            for i in range(1, 15):
-                try:
-                    course_url = self.driver.find_element('xpath', '//*[@id="region-main"]/div/div/div[2]/div/table/tbody/tr[' + str(i) + ']/td[3]/div/a')
-                    course_name = course_url.text[:-13]
-                    if course_name == name:
-                        break
-                except:
-                    pass
+        
+        for i in range(1, 15):
+            try:
+                course_url = self.driver.find_element('xpath', '//*[@id="region-main"]/div/div/div[2]/div/table/tbody/tr[' + str(i) + ']/td[3]/div/a')
+                course_name = course_url.text[:-13]
+                if course_name == name:
+                    find = True
+                    break
+            except:
+                pass
 
-            course_url.click()
+        if find:    
+            try:
+                course_url.click()
 
-            # 성적부 Xpath
-            self.driver.find_element('xpath', '//*[@id="coursemos-course-menu"]/ul/li[1]/div/div[2]/ul/li[2]/ul/li[3]/a').click()
+                # 성적부 Xpath
+                self.driver.find_element('xpath', '//*[@id="coursemos-course-menu"]/ul/li[1]/div/div[2]/ul/li[2]/ul/li[3]/a').click()
 
-            tbody = self.driver.find_element('xpath', '//*[@id="region-main"]/div/table/tbody')
-            rows = tbody.find_elements_by_tag_name("tr")
+                tbody = self.driver.find_element('xpath', '//*[@id="region-main"]/div/table/tbody')
+                rows = tbody.find_elements_by_tag_name("tr")
 
-            table = []
+                table = []
 
-            for row in rows:
-                trtable = []
-                spans = row.find_elements_by_tag_name("span")
-                if len(spans) != 0:
-                    for span in spans:
-                        trtable.append(span.text.split("\n"))
+                for row in rows:
+                    trtable = []
+                    spans = row.find_elements_by_tag_name("span")
+                    if len(spans) != 0:
+                        for span in spans:
+                            trtable.append(span.text.split("\n"))
 
-                #과제명은 태그 a에 있음
-                tag_a = row.find_elements_by_tag_name("a")  
-                for a in tag_a:
-                    trtable.append(a.text.split("\n"))
+                    #과제명은 태그 a에 있음
+                    tag_a = row.find_elements_by_tag_name("a")  
+                    for a in tag_a:
+                        trtable.append(a.text.split("\n"))
 
-                tds = row.find_elements_by_tag_name("td")
-                i = 1
-                for td in tds:
-                    tdtable = []
-                    tdtext = td.text.split("\n")
+                    tds = row.find_elements_by_tag_name("td")
+                    i = 1
+                    for td in tds:
+                        tdtable = []
+                        tdtext = td.text.split("\n")
 
-                    print_seq = [2, 6, 7, 8]  # 성적항목, 성적, 석차, 평균, 피드백만을 가져오기 위해
-                    if i in print_seq:
-                        tdtable.append(tdtext)
-                    i += 1
+                        print_seq = [2, 6, 7, 8]  # 성적항목, 성적, 석차, 평균, 피드백만을 가져오기 위해
+                        if i in print_seq:
+                            tdtable.append(tdtext)
+                        i += 1
 
-                    tdtable = sum(tdtable, [])
-                    trtable.append(tdtable)
+                        tdtable = sum(tdtable, [])
+                        trtable.append(tdtable)
 
-                trtable = sum(trtable, [])
-                table.append(trtable)
-            table.pop(0)
+                    trtable = sum(trtable, [])
+                    table.append(trtable)
+                table.pop(0)
 
-            return table
+                return table
 
-        except:
-            return 0
+            except:
+                t = ['영상 정보가 없거나 잘못되었습니다.']
+                return t
+        else:
+            t = ['강의를 찾지 못했습니다.']
+            return t
