@@ -18,7 +18,7 @@ body{
 
 /* chat body */
 .chatBody {
-    /*min-width: 360px;*/
+    min-width: 360px;
     /*max-width: 450px;*/
     /*min-height: 640px;*/
     /*max-height: 640px;*/
