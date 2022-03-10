@@ -1,6 +1,7 @@
 from django.http import JsonResponse
 from django.shortcuts import render, HttpResponse
 from django.contrib import messages
+from .models import App_Session
 
 import chatbot
 from lms_crawl import Lms_crawl
@@ -13,6 +14,8 @@ from tabulate import tabulate
 
 import os
 from google.cloud import dialogflow
+
+from myapp.models import App_Session
 
 # 첫 번째 파라미터로 요청과 관련된 여러가지 정보가 들어있는 객체를 전달해주도록 되어있음(request)
 
@@ -80,10 +83,24 @@ def login(request):
     # 로그인 성공
     if d.current_url == 'https://cyber.inu.ac.kr/':
 
+        key = request.session.session_key
+        date = request.session.get_expiry_date()
+        if request.POST.getlist('autologin'):
+            # App_Session 테이블에 레코드(session key & autologin bool) 추가
+            app_session = App_Session(session_key=key, auto_login=True)
+            app_session.save()
+            autologin = True
+        else:
+            autologin = False
+            
+        print("autologin =", autologin)
+
+
         names = c.find_course(year, semester)
         print(names)
         print()
         context['courses'] = names
+
         return render(request, 'chathome.html', context)
 
     # 로그인 실패시 알림 띄우고 다시 로그인 창으로 돌아감
