@@ -150,3 +150,7 @@ body{
     opacity: 1;
     pointer-events: auto;
 }
+
+a {
+    color: white;
+  }
