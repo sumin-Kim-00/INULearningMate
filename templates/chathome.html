@@ -16,7 +16,7 @@
     function firstBotMessage() {
         let firstMessage = "INULearningMate입니다! 무엇을 도와드릴까요?"
         document.getElementById("chatbox").innerHTML
-        += "<div class='chatBot'> <span>"+firstMessage+"</span></div>";
+        += "<div class='chatBot'> <span>"+firstMessage+"&#128513"+"</span></div>";
 
         let course_name ="<div class='chatBot'><span>&lt;현재 수강 중인 과목&gt;<br> {{courses}} </span></div>";
         course_name = course_name.replace(/\]/g,"");
