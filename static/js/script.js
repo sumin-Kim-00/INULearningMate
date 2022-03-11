@@ -1,6 +1,9 @@
+
 $(document).ready(function() {
     firstBotMessage();
 });
+
+
 
 
 function replaceEnter(str)

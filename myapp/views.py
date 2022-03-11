@@ -1,5 +1,5 @@
 from django.http import JsonResponse
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import redirect, render, HttpResponse
 from django.contrib import messages
 from .models import App_Session
 
@@ -15,7 +15,9 @@ from tabulate import tabulate
 import os
 from google.cloud import dialogflow
 
-# from myapp.models import App_Session
+from myapp.models import App_Session
+
+from django.contrib.auth import authenticate, login
 
 # 첫 번째 파라미터로 요청과 관련된 여러가지 정보가 들어있는 객체를 전달해주도록 되어있음(request)
 
@@ -83,20 +85,20 @@ def login(request):
     # 로그인 성공
     if d.current_url == 'https://cyber.inu.ac.kr/':
 
-        # key = request.session.session_key
-        # date = request.session.get_expiry_date()
-        # if request.POST.getlist('autologin'):
-        #     # App_Session 테이블에 레코드(session key & autologin bool) 추가
-        #     app_session = App_Session(session_key=key, auto_login=True)
-        #     app_session.save()
-        #     autologin = True
-        # else:
-        #     # App_Session 테이블에 레코드(session key & autologin bool) 추가
-        #     app_session = App_Session(session_key=key, auto_login=False)
-        #     app_session.save()
-        #     autologin = False
+        key = request.session.session_key
+        date = request.session.get_expiry_date()
+        if request.POST.getlist('autologin'):
+            # App_Session 테이블에 레코드(session key & autologin bool) 추가
+            app_session = App_Session(session_key=key, auto_login=True)
+            app_session.save()
+            autologin = True
+        else:
+            # App_Session 테이블에 레코드(session key & autologin bool) 추가
+            app_session = App_Session(session_key=key, auto_login=False)
+            app_session.save()
+            autologin = False
             
-        # print("autologin =", autologin)
+        print("autologin =", autologin)
 
 
         names = c.find_course(year, semester)
@@ -132,6 +134,7 @@ def chat(request):
     print(names)
 
     chat = chatbot.detect_intent_texts(c, DIALOGFLOW_PROJECT_ID, SESSION_ID, chat, DIALOGFLOW_LANGUAGE_CODE, year, semester, names)
+    
 
     chatanswer = chat
     # print(chatanswer)
@@ -145,7 +148,6 @@ def chat(request):
     }
 
     return JsonResponse(context, content_type="application/json")
-
 """
 def index.html(request):
     return HttpResponse('<h1>Random</h1>' + str(random.random()))  # Http를 이용해서 응답

@@ -47,8 +47,6 @@ SESSION_ID = 'mm'
 # TEXTS = ["알고리즘 이번 과제 몇점이야?", "지능정보시스템 강의 출석 현황 알려줘", "컴퓨터네트워크 출석 알려줘", "제출한 강의 알려줘", "안녕", "폴백 유도 텍스트"]
 
 
-# In[ ]:
-
 
 def detect_intent_texts(crawler, project_id, session_id, texts, language_code, year, semester, names):
     """Returns the result of detect intent with texts as inputs.
@@ -87,7 +85,14 @@ def detect_intent_texts(crawler, project_id, session_id, texts, language_code, y
             if name in text:
                 course_name = name
 
-            # else:
+            else:
+                result="어떤 과목을 알고 싶으세요?<br>"
+                result += '<div class="cnBtn">'
+                for i in range(len(names)):
+                   result += '<div><button onclick="cn_btn()">'+names[i]+'</button></div>'
+                result += '</div>'
+                return result
+                
         
         
         if ftext == "강의":
@@ -95,7 +100,7 @@ def detect_intent_texts(crawler, project_id, session_id, texts, language_code, y
             table = crawler.course_check(course_name, year, semester)
             crawler.not_checked(table)
             result = ""
-            result += '<'+ course_name +'><br>'
+            result += '<'+ course_name +'><br><br>'
             result += crawler.print_table(table, 'c')
             print(result)
             return result
@@ -104,7 +109,7 @@ def detect_intent_texts(crawler, project_id, session_id, texts, language_code, y
             print("답장 :", ftext)
             table = crawler.assign_check(course_name, year, semester)
             result = ""
-            result += '<' + course_name + '><br>'
+            result += '<' + course_name + '><br><br>'
             result += crawler.print_table(table, 'a')
             print(result)
             return result
@@ -113,7 +118,7 @@ def detect_intent_texts(crawler, project_id, session_id, texts, language_code, y
             print("답장 :", ftext)
             table = crawler.grade_check(course_name, year, semester)
             result = ""
-            result += '<' + course_name + '><br>'
+            result += '<' + course_name + '><br><br>'
             result += crawler.print_table(table, 'g')
             print(result)
             return result
@@ -122,9 +127,6 @@ def detect_intent_texts(crawler, project_id, session_id, texts, language_code, y
             print("답장 :", ftext)
             return ftext
         print()
-
-
-# In[ ]:
 
 '''
 options = webdriver.ChromeOptions()

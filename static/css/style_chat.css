@@ -154,3 +154,23 @@ body{
 a {
     color: white;
   }
+
+.cnBtn button:hover{
+    background: #007bff;
+    color: white;
+}
+
+.cnBtn button{
+    position: relative;
+    text-align: center;
+    background-color: white;
+    /* color: #007bff; */
+    min-width: 180px;
+    min-height: 25px;
+    border-radius: 100px;
+    outline: none;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    margin: 3px;
+    transition: 0.3s all ease;
+  }
