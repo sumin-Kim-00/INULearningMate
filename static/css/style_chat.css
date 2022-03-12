@@ -165,12 +165,13 @@ a {
     text-align: center;
     background-color: white;
     /* color: #007bff; */
-    min-width: 180px;
-    min-height: 25px;
+    min-width: 98%;
+    min-height: 30px;
     border-radius: 100px;
     outline: none;
     border: none;
     font-family: 'Poppins', sans-serif;
+    font-size: 15px;
     margin: 3px;
     transition: 0.3s all ease;
   }

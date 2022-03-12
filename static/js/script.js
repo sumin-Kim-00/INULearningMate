@@ -80,3 +80,110 @@ function sendAsk() {
 }
 
 
+function cn_btn_course() {
+    ctext = event.target.value;
+    bottext = "<div class='chatBot'><span>" + ctext + "</span></div>";
+    document.getElementById("chatbox").innerHTML += bottext;
+
+    var strurl = "chat?chatinput=" + ctext +" 강의";
+    var objDiv = document.getElementById("chatbox");
+    objDiv.scrollTop = objDiv.scrollHeight;
+
+    xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+            var data = xhr.responseText;
+
+            var obj = JSON.parse(data);
+
+            if(obj.flag == "0"){
+                ans = obj.chatanswer
+                bottext = "<div class='chatBot'><span>" + ans + "</span></div>";
+                document.getElementById("chatbox").innerHTML += bottext;
+
+
+                var objDiv = document.getElementById("chatbox");
+                objDiv.scrollTop = objDiv.scrollHeight;
+
+                document.getElementById("chattext").value = "";
+                document.getElementById("chattext").focus();
+            }
+        }
+    };
+
+    xhr.open("GET", strurl);
+    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+    xhr.send(null);
+}
+
+function cn_btn_assign() {
+    ctext = event.target.value;
+    bottext = "<div class='chatBot'><span>" + ctext + "</span></div>";
+    document.getElementById("chatbox").innerHTML += bottext;
+
+    var strurl = "chat?chatinput=" + ctext +" 과제";
+    var objDiv = document.getElementById("chatbox");
+    objDiv.scrollTop = objDiv.scrollHeight;
+
+    xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+            var data = xhr.responseText;
+
+            var obj = JSON.parse(data);
+
+            if(obj.flag == "0"){
+                ans = obj.chatanswer
+                bottext = "<div class='chatBot'><span>" + ans + "</span></div>";
+                document.getElementById("chatbox").innerHTML += bottext;
+
+
+                var objDiv = document.getElementById("chatbox");
+                objDiv.scrollTop = objDiv.scrollHeight;
+
+                document.getElementById("chattext").value = "";
+                document.getElementById("chattext").focus();
+            }
+        }
+    };
+
+    xhr.open("GET", strurl);
+    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+    xhr.send(null);
+}
+
+function cn_btn_grade() {
+    ctext = event.target.value;
+    bottext = "<div class='chatBot'><span>" + ctext + "</span></div>";
+    document.getElementById("chatbox").innerHTML += bottext;
+
+    var strurl = "chat?chatinput=" + ctext +" 성적";
+    var objDiv = document.getElementById("chatbox");
+    objDiv.scrollTop = objDiv.scrollHeight;
+
+    xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+            var data = xhr.responseText;
+
+            var obj = JSON.parse(data);
+
+            if(obj.flag == "0"){
+                ans = obj.chatanswer
+                bottext = "<div class='chatBot'><span>" + ans + "</span></div>";
+                document.getElementById("chatbox").innerHTML += bottext;
+
+
+                var objDiv = document.getElementById("chatbox");
+                objDiv.scrollTop = objDiv.scrollHeight;
+
+                document.getElementById("chattext").value = "";
+                document.getElementById("chattext").focus();
+            }
+        }
+    };
+
+    xhr.open("GET", strurl);
+    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+    xhr.send(null);
+}
