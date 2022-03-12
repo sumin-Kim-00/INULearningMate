@@ -64,9 +64,8 @@ function sendAsk() {
                 ans = obj.chatanswer
 
                 div = document.getElementById('loading');
-                divParent = div.parentNode;
-                divParent2 = divParent.parentNode;
-                divParent2.remove();
+                divParent = div.parentNode.parentNode;
+                divParent.remove();
 
                 bottext = "<div class='chatBot'><span>" + ans + "</span></div>";
                 document.getElementById("chatbox").innerHTML += bottext;
@@ -111,9 +110,8 @@ function cn_btn_course() {
                 ans = obj.chatanswer
 
                 div = document.getElementById('loading');
-                divParent = div.parentNode;
-                divParent2 = divParent.parentNode;
-                divParent2.remove();
+                divParent = div.parentNode.parentNode;
+                divParent.remove();
 
                 bottext = "<div class='chatBot'><span>" + ans + "</span></div>";
                 document.getElementById("chatbox").innerHTML += bottext;
@@ -155,9 +153,8 @@ function cn_btn_assign() {
                 ans = obj.chatanswer
 
                 div = document.getElementById('loading');
-                divParent = div.parentNode;
-                divParent2 = divParent.parentNode;
-                divParent2.remove();
+                divParent = div.parentNode.parentNode;
+                divParent.remove();
 
                 bottext = "<div class='chatBot'><span>" + ans + "</span></div>";
                 document.getElementById("chatbox").innerHTML += bottext;
@@ -200,9 +197,8 @@ function cn_btn_grade() {
                 ans = obj.chatanswer
 
                 div = document.getElementById('loading');
-                divParent = div.parentNode;
-                divParent2 = divParent.parentNode;
-                divParent2.remove();
+                divParent = div.parentNode.parentNode;
+                divParent.remove();
 
                 bottext = "<div class='chatBot'><span>" + ans + "</span></div>";
                 document.getElementById("chatbox").innerHTML += bottext;
