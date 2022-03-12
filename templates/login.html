@@ -11,8 +11,7 @@
 <body>
 <div class="loginBody">
     <div class="loginBox" id="loginbox">
-        <h2>INU<br>LearningMate</h2>
-        <br>
+        <h2>INU<br>LearningMate</h2>        
         <form action="{% url 'login'%}" method="POST">
             {% csrf_token %}
             <div class="inputIdPw">
@@ -23,11 +22,12 @@
                 <input name="password" placeholder="" type="password" required/>
                 <br>
                 <button type="submit">로그인</button>
-            </div>           
-            <input type="checkbox" id="autologin" name="autologin" value="True">
-            <label for="autologin">자동 로그인</label>
-            <br><br>
-            <a class="loginFind" href="https://portal.inu.ac.kr:444/enview/">아이디/ 비밀번호 찾기</a>
+            </div>    
+            <div class="checkbox">       
+                <input type="checkbox" id="autologin" name="autologin" value="True">
+                <label for="autologin">자동 로그인</label>
+            </div>
+            <a class="loginFind" href="https://portal.inu.ac.kr:444/enview/" target="_blank" rel="noopener noreferrer">아이디/ 비밀번호 찾기</a>
         </form>
     </div>
 </div>

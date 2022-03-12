@@ -43,23 +43,37 @@ options.add_argument("disable-gpu")
 def home(request):
     context = {}
 
+    # 아이디, 비밀번호가 담긴 쿠키가 존재할 때 - 강의를 찾아 chathome.html으로 바로 반환함
+    if request.COOKIES.get('username') is not None and request.COOKIES.get('password') is not None:
+        request.session['username'] = request.COOKIES.get('username')
+        request.session['password'] = request.COOKIES.get('password')
+        user = request.session['username']
+        pw = request.session['password']
+
+        d = webdriver.Chrome(options=options)
+        c = Lms_crawl(d)
+
+        c.login(user, pw)
+
+        names = c.find_course(year, semester)
+        print(names)
+        print()
+
+        context = {
+            'username': user,
+            'password': pw,
+            'courses' : names
+        }
+
+        return render(request, "chathome.html", context)
+
+    # 쿠키 존재 X
     print(request.session.session_key)
     request.session['username'] = 'user'
     request.session['password'] = 'pw'
 
     return render(request, "login.html", context)
 
-
-def result(request):
-    name = request.POST['username']
-    students = ['amy', 'bob', 'catherine', 'dennis', 'ethan']
-
-    if name in students:
-        is_exist = True
-    else:
-        is_exist = False
-
-    return render(request, 'test.html', {'user_name': name, 'is_exist': is_exist})
 
 def login(request):
     d = webdriver.Chrome(options=options)
@@ -84,22 +98,26 @@ def login(request):
 
     # 로그인 성공
     if d.current_url == 'https://cyber.inu.ac.kr/':
-
-        key = request.session.session_key
-        date = request.session.get_expiry_date()
+        # 자동 로그인 체크 시
         if request.POST.getlist('autologin'):
-            # App_Session 테이블에 레코드(session key & autologin bool) 추가
-            app_session = App_Session(session_key=key, auto_login=True)
-            app_session.save()
             autologin = True
-        else:
-            # App_Session 테이블에 레코드(session key & autologin bool) 추가
-            app_session = App_Session(session_key=key, auto_login=False)
-            app_session.save()
-            autologin = False
-            
-        print("autologin =", autologin)
+            print("autologin =", autologin)
 
+            names = c.find_course(year, semester)
+            print(names)
+            print()
+            context['courses'] = names
+
+            response = render(request, 'chathome.html', context)
+            response.set_cookie('username', username)
+            response.set_cookie('password', password)
+
+            return response
+
+        # 자동 로그인 체크 X
+        autologin = False
+
+        print("autologin =", autologin)
 
         names = c.find_course(year, semester)
         print(names)
