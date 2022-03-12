@@ -175,3 +175,52 @@ a {
     margin: 3px;
     transition: 0.3s all ease;
   }
+
+
+.loading {
+    position: relative;
+    width: 96px;
+    height: 22px;
+    margin: 0 auto;
+    padding: 10px;
+}
+    
+.dot div {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 10px;
+    height: 10px;
+    margin: auto;
+    border-radius: 10px;
+    background-color: #fff;
+    transform: scale(0);
+    animation: dot 1.5s linear infinite;
+}
+    
+.dot div:nth-child(1) {
+    left: -50px;
+    animation-delay: -0.1s;
+}
+    
+.dot div:nth-child(3) {
+    right: -50px;
+    animation-delay: 0.1s;
+}
+    
+ @keyframes dot {
+    0% {
+    transform: scale(0);
+    }
+    35% {
+    transform: scale(1);
+    }
+    70% {
+    transform: scale(0);
+    }
+    100% {
+    transform: scale(0);
+    }
+}

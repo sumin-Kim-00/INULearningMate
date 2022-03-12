@@ -4,8 +4,6 @@ $(document).ready(function() {
 });
 
 
-
-
 function replaceEnter(str)
 {
     if (str == undefined || str == null) return "";
@@ -46,10 +44,14 @@ function sendAsk() {
 
     addtext = "<div class='chatMe'> <span>" + ctext + "</span></div>";
     document.getElementById("chatbox").innerHTML += addtext;
+    
+    loadingText = '<div class="chatBot"><span><div class="loading dot" id="loading"><div></div><div></div><div></div></div></span></div>'
+    document.getElementById("chatbox").innerHTML += loadingText;
 
     var strurl = "chat?chatinput=" + ctext;
     var objDiv = document.getElementById("chatbox");
     objDiv.scrollTop = objDiv.scrollHeight;
+
 
     xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
@@ -60,6 +62,12 @@ function sendAsk() {
 
             if(obj.flag == "0"){
                 ans = obj.chatanswer
+
+                div = document.getElementById('loading');
+                divParent = div.parentNode;
+                divParent2 = divParent.parentNode;
+                divParent2.remove();
+
                 bottext = "<div class='chatBot'><span>" + ans + "</span></div>";
                 document.getElementById("chatbox").innerHTML += bottext;
 
@@ -82,8 +90,11 @@ function sendAsk() {
 
 function cn_btn_course() {
     ctext = event.target.value;
-    bottext = "<div class='chatBot'><span>" + ctext + "</span></div>";
+    bottext = "<div class='chatMe'><span>" + ctext + "</span></div>";
     document.getElementById("chatbox").innerHTML += bottext;
+
+    loadingText = '<div class="chatBot"><span><div class="loading dot" id="loading"><div></div><div></div><div></div></div></span></div>'
+    document.getElementById("chatbox").innerHTML += loadingText;
 
     var strurl = "chat?chatinput=" + ctext +" 강의";
     var objDiv = document.getElementById("chatbox");
@@ -98,9 +109,14 @@ function cn_btn_course() {
 
             if(obj.flag == "0"){
                 ans = obj.chatanswer
+
+                div = document.getElementById('loading');
+                divParent = div.parentNode;
+                divParent2 = divParent.parentNode;
+                divParent2.remove();
+
                 bottext = "<div class='chatBot'><span>" + ans + "</span></div>";
                 document.getElementById("chatbox").innerHTML += bottext;
-
 
                 var objDiv = document.getElementById("chatbox");
                 objDiv.scrollTop = objDiv.scrollHeight;
@@ -118,13 +134,16 @@ function cn_btn_course() {
 
 function cn_btn_assign() {
     ctext = event.target.value;
-    bottext = "<div class='chatBot'><span>" + ctext + "</span></div>";
+    bottext = "<div class='chatMe'><span>" + ctext + "</span></div>";
     document.getElementById("chatbox").innerHTML += bottext;
+
+    loadingText = '<div class="chatBot"><span><div class="loading dot" id="loading"><div></div><div></div><div></div></div></span></div>'
+    document.getElementById("chatbox").innerHTML += loadingText;
 
     var strurl = "chat?chatinput=" + ctext +" 과제";
     var objDiv = document.getElementById("chatbox");
     objDiv.scrollTop = objDiv.scrollHeight;
-
+    
     xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4) {
@@ -134,6 +153,12 @@ function cn_btn_assign() {
 
             if(obj.flag == "0"){
                 ans = obj.chatanswer
+
+                div = document.getElementById('loading');
+                divParent = div.parentNode;
+                divParent2 = divParent.parentNode;
+                divParent2.remove();
+
                 bottext = "<div class='chatBot'><span>" + ans + "</span></div>";
                 document.getElementById("chatbox").innerHTML += bottext;
 
@@ -154,8 +179,11 @@ function cn_btn_assign() {
 
 function cn_btn_grade() {
     ctext = event.target.value;
-    bottext = "<div class='chatBot'><span>" + ctext + "</span></div>";
+    bottext = "<div class='chatMe'><span>" + ctext + "</span></div>";
     document.getElementById("chatbox").innerHTML += bottext;
+
+    loadingText = '<div class="chatBot"><span><div class="loading dot" id="loading"><div></div><div></div><div></div></div></span></div>'
+    document.getElementById("chatbox").innerHTML += loadingText;
 
     var strurl = "chat?chatinput=" + ctext +" 성적";
     var objDiv = document.getElementById("chatbox");
@@ -170,6 +198,12 @@ function cn_btn_grade() {
 
             if(obj.flag == "0"){
                 ans = obj.chatanswer
+
+                div = document.getElementById('loading');
+                divParent = div.parentNode;
+                divParent2 = divParent.parentNode;
+                divParent2.remove();
+
                 bottext = "<div class='chatBot'><span>" + ans + "</span></div>";
                 document.getElementById("chatbox").innerHTML += bottext;
 
