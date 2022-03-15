@@ -48,7 +48,7 @@ SESSION_ID = 'mm'
 
 
 
-def detect_intent_texts(crawler, project_id, session_id, texts, language_code, year, semester, names):
+def detect_intent_texts(crawler, project_id, session_id, texts, language_code, year, semester, names, course_name_id):
     """Returns the result of detect intent with texts as inputs.
     Using the same `session_id` between requests allows continuation
     of the conversation."""
@@ -115,7 +115,7 @@ def detect_intent_texts(crawler, project_id, session_id, texts, language_code, y
         elif ftext == "과제":
             if in_names:
                 print("답장 :", ftext)
-                table = crawler.assign_check(course_name, year, semester)
+                table = crawler.assign_check(course_name,course_name_id)
                 result = ""
                 result += '<' + course_name + '><br><br>'
                 result += crawler.print_table(table, 'a')

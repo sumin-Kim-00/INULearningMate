@@ -42,6 +42,38 @@ class Lms_crawl:
 
         return name
     
+    def find_course_name_id(self):
+        # 수강 페이지로 이동
+        url = 'https://cyber.inu.ac.kr/'
+        self.driver.get(url)
+        hrefs=self.driver.find_elements_by_css_selector(".course_link")
+        
+        course_number=[] 
+        full_course_name=[]
+        course_name=[]
+        tmp=[]
+        
+        for i in hrefs:
+            full_course_name.append(i.text)
+            course_number.append(i.get_attribute('href'))
+            
+        #링크 중에 번호만 리스트 삽입
+        for i in range(len(course_number)): 
+            course_number[i]=course_number[i][-5:] 
+            
+        #이름 가공
+        for i in range(len(full_course_name)):
+            tmp.append(full_course_name[i].split("\n"))
+            course_name.append(tmp[i][1])
+            if("NEW" in course_name[i]):
+                course_name[i]=course_name[i][:-3]
+            course_name[i]=course_name[i][:-19]      
+        
+        #dict(name:id_number)
+        course_name_id=dict(zip(course_name,course_number))
+        
+        return course_name_id
+    
     
     def print_table(self, table, ttype):
         if ttype == 'c':
@@ -138,30 +170,33 @@ class Lms_crawl:
 
         
         
-    def assign_check(self, name, year, semester):
-        # 수강 페이지로 이동
-        url = 'https://cyber.inu.ac.kr/local/ubion/user/?year=' + year + '&semester=' + semester + '0'
+    def assign_check(self,name,course_name_id):
+        # main
+        url = 'https://cyber.inu.ac.kr/'
         self.driver.get(url)
-
-        # 강의를 찾았는지 여부 확인
         find = False
-
-        for i in range(1,15):
-            try:
-                course_url = self.driver.find_element('xpath', '//*[@id="region-main"]/div/div/div[2]/div/table/tbody/tr[' + str(i) + ']/td[3]/div/a')
-                course_name = course_url.text[:-13]
-                if course_name == name:
-                    find = True
-                    break
-            except:
-                pass
-
-        # 강의를 찾으면:
+        hrefs=self.driver.find_elements_by_css_selector(".course_link") #접근
+        full_course_name=[]
+        course_name=[]
+        tmp=[]
+        for i in hrefs:
+            full_course_name.append(i.text)
+        #이름 가공
+        for i in range(len(full_course_name)):
+            tmp.append(full_course_name[i].split("\n"))
+            course_name.append(tmp[i][1])
+            if("NEW" in course_name[i]):
+                course_name[i]=course_name[i][:-3]
+            course_name[i]=course_name[i][:-19]      
+            
+        if name in course_name:
+            find = True
+            
+            
         if find:
             try:
-                course_url.click()
-                # 과제
-                self.driver.find_element('xpath', '//*[@id="coursemos-course-menu"]/ul/li[2]/div/div[2]/ul/li[3]/a').click()
+                assign_url="https://cyber.inu.ac.kr/mod/assign/index.php?id="+str(course_name_id[name])
+                self.driver.get(assign_url)
                 tbody = self.driver.find_element('xpath', '//*[@id="region-main"]/div/table/tbody')
                 rows = tbody.find_elements_by_tag_name("tr")
                 table = []
@@ -179,12 +214,12 @@ class Lms_crawl:
                     table.append(trtable)
                 return table
             except:
-                t = ['영상 정보가 없거나 잘못되었습니다.']
-                return t
+                alert= self.driver.find_element('xpath', '//*[@id="region-main"]/div/div[1]')
+                return alert.text
+                
         else:
             t = ['강의를 찾지 못했습니다.']
             return t
-        
         
     def grade_check(self, name, year, semester):
         # 수강 페이지로 이동
