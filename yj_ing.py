@@ -37,7 +37,7 @@ def thisweek_course(course, thisweek):
             while (course[i][0]==' ')or(course[i][0]==thisweek[0]):                
                     thisweek_list.append(course[i])
                     i+=1
-    if len(ii)==0:
+    if len(thisweek_list)==0:
         thisweek_list.append("해당주차가 없습니다")
     return thisweek_list
 
