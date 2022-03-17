@@ -43,19 +43,19 @@ DIALOGFLOW_PROJECT_ID = 'newagent-ocwf'
 DIALOGFLOW_LANGUAGE_CODE = 'ko'
 # 같은 세션인지 확인하는 용도, 아무 스트링이면 ok
 SESSION_ID = 'mm'
-# 챗봇 돌릴 텍스트
+# 챗봇 돌릴 텍스트= TEXTS
 # TEXTS = ["알고리즘 이번 과제 몇점이야?", "지능정보시스템 강의 출석 현황 알려줘", "컴퓨터네트워크 출석 알려줘", "제출한 강의 알려줘", "안녕", "폴백 유도 텍스트"]
 
 
 
-def detect_intent_texts(crawler, project_id, session_id, texts, language_code,names, course_name_id):
+def detect_intent_texts(crawler, project_id, session_id, texts, language_code, names, course_name_id):
     """Returns the result of detect intent with texts as inputs.
     Using the same `session_id` between requests allows continuation
     of the conversation."""
 
     session_client = dialogflow.SessionsClient()
 
-    session = session_client.session_path(project_id, session_id)
+    session = session_client.session_path(project_id, session_id) 
     print("Session path: {}\n".format(session))
 
     for text in texts:
@@ -88,12 +88,11 @@ def detect_intent_texts(crawler, project_id, session_id, texts, language_code,na
                 course_name = name
                 in_names = True
                 break
-
             else:
                 in_names = False
                 
         
-        if ftext == "강의":
+        if  "강의" in ftext:
             if in_names:
                 print("답장 :", ftext)
                 table = crawler.course_check(course_name,course_name_id)
@@ -112,7 +111,7 @@ def detect_intent_texts(crawler, project_id, session_id, texts, language_code,na
                 return result
 
             
-        elif ftext == "과제":
+        elif "과제" in ftext:
             if in_names:
                 print("답장 :", ftext)
                 table = crawler.assign_check(course_name,course_name_id)
@@ -129,7 +128,7 @@ def detect_intent_texts(crawler, project_id, session_id, texts, language_code,na
                 result += '</div>'
                 return result
                 
-        elif ftext == "성적":
+        elif "성적" in ftext:
             if in_names:
                 print("답장 :", ftext)
                 table = crawler.grade_check(course_name,course_name_id)
@@ -145,7 +144,6 @@ def detect_intent_texts(crawler, project_id, session_id, texts, language_code,na
                    result += '<div><button onclick="cn_btn_grade()" value="'+ names[i] + '">'+ names[i]+'</button></div>'
                 result += '</div>'
                 return result
-            
         else:
             print("답장 :", ftext)
             return ftext
