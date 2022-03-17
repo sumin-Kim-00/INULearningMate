@@ -151,9 +151,8 @@ def chat(request):
     names = c.find_course_name()
     print(names)
     course_name_id=c.find_course_name_id()
-
     
-    chat = chatbot.detect_intent_texts(c, DIALOGFLOW_PROJECT_ID, SESSION_ID, chat, DIALOGFLOW_LANGUAGE_CODE,names, course_name_id)
+    chat = chatbot.detect_intent_texts(c, DIALOGFLOW_PROJECT_ID, SESSION_ID, chat, DIALOGFLOW_LANGUAGE_CODE, names, course_name_id)
     
 
     chatanswer = chat
