@@ -99,74 +99,76 @@ class Lms_crawl:
             
             
     
-    def course_check(self, name, year, semester):
-        # 수강 페이지로 이동
-        url = 'https://cyber.inu.ac.kr/local/ubion/user/?year=' + year + '&semester=' + semester + '0'
+    def course_check(self, name , course_name_id):
+        # main
+        url = 'https://cyber.inu.ac.kr/'
         self.driver.get(url)
-
-        # 강의를 찾았는지 여부 확인
         find = False
+        hrefs=self.driver.find_elements_by_css_selector(".course_link") #접근
+        full_course_name=[]
+        course_name=[]
+        tmp=[]
+        for i in hrefs:
+            full_course_name.append(i.text)
+        #이름 가공
+        for i in range(len(full_course_name)):
+            tmp.append(full_course_name[i].split("\n"))
+            course_name.append(tmp[i][1])
+            if("NEW" in course_name[i]):
+                course_name[i]=course_name[i][:-3]
+            course_name[i]=course_name[i][:-19]      
+            
+        if name in course_name:
+            find = True        
+            if find:
+                try:
+                    progress_url="https://cyber.inu.ac.kr/report/ubcompletion/user_progress_a.php?id="+str(course_name_id[name])
+                    self.driver.get(progress_url)
+                    # 강의 테이블 리스트 형태로 저장
+                    table = []
 
-        for i in range(1,15):
-            try:
-                course_url = self.driver.find_element('xpath', '//*[@id="region-main"]/div/div/div[2]/div/table/tbody/tr[' + str(i) + ']/td[3]/div/a')
-                course_name = course_url.text[:-13]
-                if course_name == name:
-                    find = True
-                    break
-            except:
-                pass
+                    tbody = self.driver.find_element('xpath', '//*[@id="ubcompletion-progress-wrapper"]/div[2]/table/tbody')
+                    rows = tbody.find_elements_by_tag_name("tr")
+                    # 값 추가
+                    for row in rows:
+                        trtable = []
+                        tds = row.find_elements_by_tag_name("td")
 
-        # 강의를 찾으면:
-        if find:
-            try:
-                course_url.click()
-                # 온라인 출석부
-                self.driver.find_element('xpath', '//*[@id="coursemos-course-menu"]/ul/li[1]/div/div[2]/ul/li[2]/ul/li[1]/a').click()
+                        for td in tds:
+                            tdtable = []
+                            tdtext = td.text.split("\n")
+                            tdtable.append(tdtext)                 
+                            tdtable = sum(tdtable, [])
+                            trtable.append(tdtable)
+                        trtable = sum(trtable, [])          
+                        table.append(trtable)
 
-                # 강의 테이블 리스트 형태로 저장
-                table = []
+                    # 값 정리
+                    i = 0
+                    for t in table:
+                        row = t
+                        if row[-2] == 'O' or row[-2] == 'X' or row[-2] == ' ':
+                            pass
+                        else:
+                            row.insert(0, ' ')
+                            row.append(' ')  
 
-                tbody = self.driver.find_element('xpath', '//*[@id="ubcompletion-progress-wrapper"]/div[2]/table/tbody')
-                rows = tbody.find_elements_by_tag_name("tr")
-                # 값 추가
-                for row in rows:
-                    trtable = []
-                    tds = row.find_elements_by_tag_name("td")
+                        if row[-2] == ' ':
+                            row.append(' ') 
 
-                    for td in tds:
-                        tdtable = []
-                        tdtext = td.text.split("\n")
-                        tdtable.append(tdtext)                 
-                        tdtable = sum(tdtable, [])
-                        trtable.append(tdtable)
-                    trtable = sum(trtable, [])          
-                    table.append(trtable)
+                        del row[2]
+                        table[i] == row
+                        i += 1
 
-                # 값 정리
-                i = 0
-                for t in table:
-                    row = t
-                    if row[-2] == 'O' or row[-2] == 'X' or row[-2] == ' ':
-                        pass
-                    else:
-                        row.insert(0, ' ')
-                        row.append(' ')  
-
-                    if row[-2] == ' ':
-                        row.append(' ') 
-
-                    del row[2]
-                    table[i] == row
-                    i += 1
-
-                return table
-            except:
-                t = ['영상 정보가 없거나 잘못되었습니다.']
-                return t
+                    return table
+                except:
+                    alert= self.driver.find_element('xpath', '//*[@id="region-main"]/div/div[1]')
+                    return alert.text
+                
         else:
             t = ['강의를 찾지 못했습니다.']
             return t
+            
 
         
         
@@ -221,70 +223,69 @@ class Lms_crawl:
             t = ['강의를 찾지 못했습니다.']
             return t
         
-    def grade_check(self, name, year, semester):
+    def grade_check(self, name,course_name_number):
         # 수강 페이지로 이동
-        url = 'https://cyber.inu.ac.kr/local/ubion/user/?year=' + year + '&semester=' + semester + '0'
+        url = 'https://cyber.inu.ac.kr/'
         self.driver.get(url)
         find = False
+        hrefs=self.driver.find_elements_by_css_selector(".course_link") #접근
+        full_course_name=[]
+        course_name=[]
+        tmp=[]
+        for i in hrefs:
+            full_course_name.append(i.text)
+        #이름 가공
+        for i in range(len(full_course_name)):
+            tmp.append(full_course_name[i].split("\n"))
+            course_name.append(tmp[i][1])
+            if("NEW" in course_name[i]):
+                course_name[i]=course_name[i][:-3]
+            course_name[i]=course_name[i][:-19]      
 
-        
-        for i in range(1, 15):
-            try:
-                course_url = self.driver.find_element('xpath', '//*[@id="region-main"]/div/div/div[2]/div/table/tbody/tr[' + str(i) + ']/td[3]/div/a')
-                course_name = course_url.text[:-13]
-                if course_name == name:
-                    find = True
-                    break
-            except:
-                pass
+        if name in course_name:
+            find = True        
+            if find:
+                try:
+                    progress_url="https://cyber.inu.ac.kr/grade/report/user/index.php?id="+str(course_name_number[name])
+                    self.driver.get(progress_url)
+                    tbody = self.driver.find_element('xpath', '//*[@id="region-main"]/div/table/tbody')
+                    rows = tbody.find_elements_by_tag_name("tr")
 
-        if find:    
-            try:
-                course_url.click()
+                    table = []
 
-                # 성적부 Xpath
-                self.driver.find_element('xpath', '//*[@id="coursemos-course-menu"]/ul/li[1]/div/div[2]/ul/li[2]/ul/li[3]/a').click()
+                    for row in rows:
+                        trtable = []
+                        spans = row.find_elements_by_tag_name("span")
+                        if len(spans) != 0:
+                            for span in spans:
+                                trtable.append(span.text.split("\n"))
 
-                tbody = self.driver.find_element('xpath', '//*[@id="region-main"]/div/table/tbody')
-                rows = tbody.find_elements_by_tag_name("tr")
+                        #과제명은 태그 a에 있음
+                        tag_a = row.find_elements_by_tag_name("a")  
+                        for a in tag_a:
+                            trtable.append(a.text.split("\n"))
 
-                table = []
+                        tds = row.find_elements_by_tag_name("td")
+                        i = 1
+                        for td in tds:
+                            tdtable = []
+                            tdtext = td.text.split("\n")
 
-                for row in rows:
-                    trtable = []
-                    spans = row.find_elements_by_tag_name("span")
-                    if len(spans) != 0:
-                        for span in spans:
-                            trtable.append(span.text.split("\n"))
+                            print_seq = [2, 6, 7, 8]  # 성적항목, 성적, 석차, 평균, 피드백만을 가져오기 위해
+                            if i in print_seq:
+                                tdtable.append(tdtext)
+                            i += 1
 
-                    #과제명은 태그 a에 있음
-                    tag_a = row.find_elements_by_tag_name("a")  
-                    for a in tag_a:
-                        trtable.append(a.text.split("\n"))
+                            tdtable = sum(tdtable, [])
+                            trtable.append(tdtable)
 
-                    tds = row.find_elements_by_tag_name("td")
-                    i = 1
-                    for td in tds:
-                        tdtable = []
-                        tdtext = td.text.split("\n")
-
-                        print_seq = [2, 6, 7, 8]  # 성적항목, 성적, 석차, 평균, 피드백만을 가져오기 위해
-                        if i in print_seq:
-                            tdtable.append(tdtext)
-                        i += 1
-
-                        tdtable = sum(tdtable, [])
-                        trtable.append(tdtable)
-
-                    trtable = sum(trtable, [])
-                    table.append(trtable)
-                table.pop(0)
-
-                return table
-
-            except:
-                t = ['영상 정보가 없거나 잘못되었습니다.']
-                return t
+                        trtable = sum(trtable, [])
+                        table.append(trtable)
+                    table.pop(0)
+                    return table
+                except:
+                    t = ['영상 정보가 없거나 잘못되었습니다.']
+                    return t
         else:
             t = ['강의를 찾지 못했습니다.']
             return t
