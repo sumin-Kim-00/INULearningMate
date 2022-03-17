@@ -28,13 +28,14 @@ body{
 /* chat box - middle area */
 .chatBody .chatBox {
     background-color: white;
-    border: 1px solid #efefef;
+    /* border: 1px solid #efefef; */
+    border: none;
     padding: 10px 15px;
     /*min-height: 540px;
     max-height: 540px;*/
     overflow-y: auto;
     font-size: 15px;
-    height: 85vh;
+    height: 77vh;
 }
 
 
@@ -223,4 +224,36 @@ a {
     100% {
     transform: scale(0);
     }
+}
+
+
+.genericMenu {
+    /* position: relative; */
+    overflow: hidden;
+    width: 100%;
+    padding: 10px 20px 16px;
+    background-color: white;
+    border: none;
+    text-align: center;
+    height: 8vh;
+
+}
+
+.genericMenu button {
+    display: inline-block;
+    background-color: #FDAF17;
+    color: rgb(255, 255, 255);
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    border-radius: 1.2em;
+    padding: 5px 15px;
+    transition: all 0.2s ease-in-out 0s;
+    border: #FDAF17;
+    /* margin: auto; */
+    /* display: block; */
+}
+
+.genericMenu button:hover{
+    background: white;
+    color: #FDAF17;
 }
