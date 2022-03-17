@@ -25,22 +25,27 @@ class Lms_crawl:
         self.driver.find_element('xpath', '//*[@id="region-main"]/div/div/div/div[1]/div[1]/div[2]/form/div[2]/input').submit()
         
         
-    def find_course(self, year, semester):
+    def find_course_name(self):
         # 수강 페이지로 이동
-        url = 'https://cyber.inu.ac.kr/local/ubion/user/?year=' + year + '&semester=' + semester + '0'
+        url = 'https://cyber.inu.ac.kr/'
         self.driver.get(url)
+        hrefs=self.driver.find_elements_by_css_selector(".course_link")
 
-        # 강의 이름 찾아서 리스트에 추가
-        name = []
-        for i in range(1,15):
-            try:
-                course_url = self.driver.find_element('xpath', '//*[@id="region-main"]/div/div/div[2]/div/table/tbody/tr[' + str(i) + ']/td[3]/div/a')
-                course_name = course_url.text[:-13]
-                name.append(course_name)
-            except:
-                break
-
-        return name
+        full_course_name=[]
+        course_name=[]
+        tmp=[]
+        
+        for i in hrefs:
+            full_course_name.append(i.text)
+            
+        #이름 가공
+        for i in range(len(full_course_name)):
+            tmp.append(full_course_name[i].split("\n"))
+            course_name.append(tmp[i][1])
+            if("NEW" in course_name[i]):
+                course_name[i]=course_name[i][:-3]
+            course_name[i]=course_name[i][:-19]
+        return course_name
     
     def find_course_name_id(self):
         # 수강 페이지로 이동
@@ -289,3 +294,45 @@ class Lms_crawl:
         else:
             t = ['강의를 찾지 못했습니다.']
             return t
+
+        #이번주 강의 주차 찾기
+    def this_week(self, name,course_name_id):
+        # main
+        url = 'https://cyber.inu.ac.kr/'
+        self.driver.get(url)
+        find = False
+        hrefs=self.driver.find_elements_by_css_selector(".course_link") #접근
+        full_course_name=[]
+        course_name=[]
+        tmp=[]
+        for i in hrefs:
+            full_course_name.append(i.text)
+        for i in range(len(full_course_name)):
+            tmp.append(full_course_name[i].split("\n"))
+            course_name.append(tmp[i][1])
+            if("NEW" in course_name[i]):
+                course_name[i]=course_name[i][:-3]
+            course_name[i]=course_name[i][:-19]      
+        if name in course_name:
+            find = True  
+            if find:
+                    course_url="https://cyber.inu.ac.kr/course/view.php?id="+str(course_name_id[name])
+                    self.driver.get(course_url)
+                    element= self.driver.find_element('xpath', '//*[@id="region-main"]/div/div[1]')
+                    list=element.text.split("\n")
+                    if len(list)>3: return list[7]
+                    else: return list[:-1]
+        else:
+            t = ['강의를 찾지 못했습니다.']
+            return t
+    #thisweek에 해당하는 테이블 출력(일단 출석기준으로만 해봄)
+    def thisweek_course(course, thisweek):
+        thisweek_list=[]
+        for i in range(len(course)):
+            if course[i][0]==thisweek[0]:
+                while (course[i][0]==' ')or(course[i][0]==thisweek[0]):                
+                        thisweek_list.append(course[i])
+                        i+=1
+        if len(thisweek_list)==0:
+            thisweek_list.append("해당주차가 없습니다")
+        return thisweek_list

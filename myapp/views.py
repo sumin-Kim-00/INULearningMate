@@ -55,7 +55,7 @@ def home(request):
 
         c.login(user, pw)
 
-        names = c.find_course(year, semester)
+        names = c.find_course_name()
         print(names)
         print()
 
@@ -103,7 +103,7 @@ def login(request):
             autologin = True
             print("autologin =", autologin)
 
-            names = c.find_course(year, semester)
+            names = c.find_course_name()
             print(names)
             print()
             context['courses'] = names
@@ -119,7 +119,7 @@ def login(request):
 
         print("autologin =", autologin)
 
-        names = c.find_course(year, semester)
+        names = c.find_course_name()
         print(names)
         print()
         context['courses'] = names
@@ -148,12 +148,12 @@ def chat(request):
 
     print(chat)
 
-    names = c.find_course(year, semester)
+    names = c.find_course_name()
     print(names)
     course_name_id=c.find_course_name_id()
 
     
-    chat = chatbot.detect_intent_texts(c, DIALOGFLOW_PROJECT_ID, SESSION_ID, chat, DIALOGFLOW_LANGUAGE_CODE, year, semester, names, course_name_id)
+    chat = chatbot.detect_intent_texts(c, DIALOGFLOW_PROJECT_ID, SESSION_ID, chat, DIALOGFLOW_LANGUAGE_CODE,names, course_name_id)
     
 
     chatanswer = chat
