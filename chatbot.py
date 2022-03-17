@@ -132,7 +132,7 @@ def detect_intent_texts(crawler, project_id, session_id, texts, language_code, y
         elif ftext == "성적":
             if in_names:
                 print("답장 :", ftext)
-                table = crawler.grade_check(course_name, year, semester)
+                table = crawler.grade_check(course_name,course_name_id)
                 result = ""
                 result += '<' + course_name + '><br><br>'
                 result += crawler.print_table(table, 'g')
