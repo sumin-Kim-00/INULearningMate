@@ -33,7 +33,10 @@
 </head>
 <body>
     <div class="chatBody">
-        <div class="chatHeader">INULearningMate</div>
+        <div class="chatHeader">
+            <span>INULearningMate</span>
+            <span class="menuButton" onclick="open_menu()"> ≡ </span>
+        </div>
 
         <div class="chatBox" id="chatbox"></div>
 
@@ -55,7 +58,24 @@
                 <button onclick="sendAsk()" id="sendbtn">SEND</button>
             </div>
         </div>
+
+        <div class="shade" id="shade" onclick="close_menu()"></div>
+
+        <div class="menu" id="menu">
+            <div class="profile">
+                <center><img class="profilePic" src="{% static 'img/user.png' %}" alt="프로필사진"></center>
+                <div class="username">{{username}} 님</div>
+            </div>
+            <form action="{% url 'logout'%}" method="POST">
+                {% csrf_token %}
+                <button class="logout" type="submit"> 로그아웃 </button>
+            </form>
+
+        </div>
+
+        
     </div>
+
 </body>
 </html>
 

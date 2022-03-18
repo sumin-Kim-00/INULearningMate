@@ -217,3 +217,29 @@ function cn_btn_grade() {
     xhr.setRequestHeader("X-CSRFToken", csrftoken);
     xhr.send(null);
 }
+
+
+function open_menu(){
+    document.getElementById("menu").style.display = "block";
+    document.getElementById("shade").style.display = "block";
+}
+
+function close_menu(){
+    document.getElementById("menu").style.display = "none";
+    document.getElementById("shade").style.display = "none";
+}
+
+function logout(){
+    var cookieName = getCookie("username");
+
+    console.log(cookieName);
+
+    document.cookie = 'sessionid=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    if (cookieName != null){
+        document.cookie = 'username=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        document.cookie = 'password=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    }
+
+    sessionStorage.clear();
+    location.reload();
+}

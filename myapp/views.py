@@ -167,6 +167,16 @@ def chat(request):
     }
 
     return JsonResponse(context, content_type="application/json")
+
+
+def logout(request):
+    context = {}
+    response = render(request, 'login.html', context)
+    if request.COOKIES.get('username') is not None and request.COOKIES.get('password') is not None:
+        response.delete_cookie('username')
+        response.delete_cookie('password')
+    return response
+
 """
 def index.html(request):
     return HttpResponse('<h1>Random</h1>' + str(random.random()))  # Http를 이용해서 응답
