@@ -45,7 +45,9 @@ prefs = {'profile.default_content_setting_values': {
     'metro_switch_to_desktop' : 2, 'protected_media_identifier': 2, 'app_banner': 2, 
     'site_engagement' : 2, 'durable_storage' : 2}} 
 options.add_experimental_option('prefs', prefs)
-
+options.add_argument("start-maximized")
+options.add_argument("disable-infobars")
+options.add_argument("--disable-extensions")
 options.add_experimental_option("excludeSwitches", ["enable-logging"])
 options.add_argument('headless')
 options.add_argument('window-size=1920x1080')
