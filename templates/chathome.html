@@ -69,12 +69,35 @@
                 <center><img class="profilePic" src="{% static 'img/user.png' %}" alt="프로필사진"></center>
                 <div class="username">{{username}} 님</div>
             </div>
+            
+            <hr class="line">
+            <div class="menuBtn">
+                <img class="menuBtnPic" src="{% static 'img/homepage.png' %}" alt="홈페이지사진">
+                <button class="menuBtnBtn" onclick="window.open('https://cyber.inu.ac.kr/');"> 인천대학교 이러닝 </button>
+            </div>
+
+            <hr class="line">
+            <div class="menuBtn">
+                <img class="menuBtnPic" src="{% static 'img/homepage.png' %}" alt="홈페이지사진">
+                <button class="menuBtnBtn" onclick="window.open('https://www.inu.ac.kr/');"> 인천대학교 홈페이지 </button>
+            </div>
+
+            <hr class="line">
+            <div class="menuBtn">
+                <img class="menuBtnPic" src="{% static 'img/homepage.png' %}" alt="홈페이지사진">
+                <button class="menuBtnBtn" onclick="window.open('https://portal.inu.ac.kr:444/enview/');"> 인천대학교 포털 </button>
+            </div>
+
+            <hr class="line">
+            <div class="space"></div>
+
+
             <hr class="line">
             <form action="{% url 'logout'%}" method="POST">
                 {% csrf_token %}
-                <div class="logout">
-                <img class="logoutPic" src="{% static 'img/logout.png' %}" alt="로그아웃사진">
-                <button class="logoutBtn" type="submit"> 로그아웃 </button>
+                <div class="menuBtn">
+                    <img class="menuBtnPic" src="{% static 'img/logout.png' %}" alt="로그아웃사진">
+                    <button class="menuBtnBtn" type="submit"> 로그아웃 </button>
                 </div>
             </form>
 
