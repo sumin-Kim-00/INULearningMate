@@ -51,6 +51,15 @@ body{
     font-size: 20px;
 }
 
+.chatBody .chatHeader .home  {
+    float: left;
+    padding : 0px 15px;
+}
+
+.home .homePic {
+    filter: invert(100%) sepia(6%) saturate(0%) hue-rotate(106deg) brightness(108%) contrast(106%);
+}
+
 
 .chatBody .chatHeader .menuButton {
     float: right;
