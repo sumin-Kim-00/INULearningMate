@@ -62,13 +62,20 @@
         <div class="shade" id="shade" onclick="close_menu()"></div>
 
         <div class="menu" id="menu">
+            <div class="menuHeader">
+                <span>MENU</span>
+            </div>
             <div class="profile">
                 <center><img class="profilePic" src="{% static 'img/user.png' %}" alt="프로필사진"></center>
                 <div class="username">{{username}} 님</div>
             </div>
+            <hr class="line">
             <form action="{% url 'logout'%}" method="POST">
                 {% csrf_token %}
-                <button class="logout" type="submit"> 로그아웃 </button>
+                <div class="logout">
+                <img class="logoutPic" src="{% static 'img/logout.png' %}" alt="로그아웃사진">
+                <button class="logoutBtn" type="submit"> 로그아웃 </button>
+                </div>
             </form>
 
         </div>

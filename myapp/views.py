@@ -1,3 +1,4 @@
+import datetime
 from django.http import JsonResponse
 from django.shortcuts import redirect, render, HttpResponse
 from django.contrib import messages
@@ -41,6 +42,7 @@ options.add_argument("disable-gpu")
 
 
 def home(request):
+    print(request.session.session_key)
     context = {}
 
     # 아이디, 비밀번호가 담긴 쿠키가 존재할 때 - 강의를 찾아 chathome.html으로 바로 반환함
@@ -68,7 +70,6 @@ def home(request):
         return render(request, "chathome.html", context)
 
     # 쿠키 존재 X
-    print(request.session.session_key)
     request.session['username'] = 'user'
     request.session['password'] = 'pw'
 
@@ -108,9 +109,12 @@ def login(request):
             print()
             context['courses'] = names
 
-            response = render(request, 'chathome.html', context)
-            response.set_cookie('username', username)
-            response.set_cookie('password', password)
+            # request.session.set_expiry(2592000)
+            expire = datetime.datetime.now() + datetime.timedelta(days = 30)
+            
+            response = render(request, 'chathome.html', context) 
+            response.set_cookie('username', username, expires=expire)
+            response.set_cookie('password', password, expires=expire)
 
             return response
 
@@ -175,6 +179,7 @@ def logout(request):
     if request.COOKIES.get('username') is not None and request.COOKIES.get('password') is not None:
         response.delete_cookie('username')
         response.delete_cookie('password')
+
     return response
 
 """
