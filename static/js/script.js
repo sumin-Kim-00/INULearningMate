@@ -95,7 +95,7 @@ function cn_btn_course() {
     loadingText = '<div class="chatBot"><span><div class="loading dot" id="loading"><div></div><div></div><div></div></div></span></div>'
     document.getElementById("chatbox").innerHTML += loadingText;
 
-    var strurl = "chat?chatinput=" + ctext;
+    var strurl = "chat?chatinput=" + ctext + " 강의 출석";
     var objDiv = document.getElementById("chatbox");
     objDiv.scrollTop = objDiv.scrollHeight;
 
@@ -138,7 +138,7 @@ function cn_btn_assign() {
     loadingText = '<div class="chatBot"><span><div class="loading dot" id="loading"><div></div><div></div><div></div></div></span></div>'
     document.getElementById("chatbox").innerHTML += loadingText;
 
-    var strurl = "chat?chatinput=" + ctext;
+    var strurl = "chat?chatinput=" + ctext  + " 과제 제출";
     var objDiv = document.getElementById("chatbox");
     objDiv.scrollTop = objDiv.scrollHeight;
     
@@ -182,7 +182,7 @@ function cn_btn_grade() {
     loadingText = '<div class="chatBot"><span><div class="loading dot" id="loading"><div></div><div></div><div></div></div></span></div>'
     document.getElementById("chatbox").innerHTML += loadingText;
 
-    var strurl = "chat?chatinput=" + ctext;
+    var strurl = "chat?chatinput=" + ctext + " 성적 확인";
     var objDiv = document.getElementById("chatbox");
     objDiv.scrollTop = objDiv.scrollHeight;
 
