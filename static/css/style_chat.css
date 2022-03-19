@@ -304,6 +304,14 @@ a {
     padding-left: 20px;
 }
 
+.menuBody {
+    height : 85vh;
+}
+
+.menuFooter {
+    height : 6.4vh;
+}
+
 .menu .menuBtn {
     width: 90%;
     margin: auto;
@@ -323,6 +331,7 @@ a {
 
 .menu .menuBtnPic {
     height: 16px;
+    vertical-align: middle;
     filter: invert(39%) sepia(71%) saturate(5870%) hue-rotate(200deg) brightness(104%) contrast(110%);
 }
 
@@ -354,8 +363,4 @@ a {
     border: 0;
     background-color: #007bff;
     height: 1px;
-}
-
-.space {
-    height : 42vh;
 }
