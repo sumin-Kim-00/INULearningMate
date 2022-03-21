@@ -93,40 +93,79 @@ def detect_intent_texts(crawler, project_id, session_id, texts, language_code, n
                 
         
         if  "강의" in ftext:
-            if in_names:
-                print("답장 :", ftext)
-                table = crawler.course_check(course_name,course_name_id)
-                crawler.not_checked(table)
-                result = ""
-                result += '<'+ course_name +'><br><br>'
-                result += crawler.print_table(table, 'c')
-                print(result)
-                return result
+            if "이번주" in ftext:
+                if in_names:
+                    print("답장 :", ftext)
+                    table = crawler.course_check(course_name,course_name_id)
+                    thisweek=crawler.thisweek(course_name, course_name_id)
+                    table=crawler.thisweek_course(table, thisweek)
+                    crawler.not_checked(table)
+                    result = ""
+                    result += '<'+ course_name +'><br><br>'
+                    result += crawler.print_table(table, 'c')
+                    print(result)
+                    return result
+                else:
+                    result="어떤 과목의 이번주 강의 출석 현황을 알고 싶으세요?<br>"
+                    result += '<div class="cnBtn">'
+                    for i in range(len(names)):
+                        result += '<div><button onclick="cn_btn_course()" value="'+ names[i] + '">'+ names[i]+'</button></div>'
+                    result += '</div>'
+                    return result
             else:
-                result="어떤 과목의 강의 출석 현황을 알고 싶으세요?<br>"
-                result += '<div class="cnBtn">'
-                for i in range(len(names)):
-                    result += '<div><button onclick="cn_btn_course()" value="'+ names[i] + '">'+ names[i]+'</button></div>'
-                result += '</div>'
-                return result
+                if in_names:
+                    print("답장 :", ftext)
+                    table = crawler.course_check(course_name,course_name_id)
+                    crawler.not_checked(table)
+                    result = ""
+                    result += '<'+ course_name +'><br><br>'
+                    result += crawler.print_table(table, 'c')
+                    print(result)
+                    return result
+                else:
+                    result="어떤 과목의 강의 출석 현황을 알고 싶으세요?<br>"
+                    result += '<div class="cnBtn">'
+                    for i in range(len(names)):
+                        result += '<div><button onclick="cn_btn_course()" value="'+ names[i] + '">'+ names[i]+'</button></div>'
+                    result += '</div>'
+                    return result
 
-            
         if "과제" in ftext:
-            if in_names:
-                print("답장 :", ftext)
-                table = crawler.assign_check(course_name,course_name_id)
-                result = ""
-                result += '<' + course_name + '><br><br>'
-                result += crawler.print_table(table, 'a')
-                print(result)
-                return result
+            if "이번주" in ftext:
+                if in_names:
+                    print("답장 :", ftext)
+                    table = crawler.assign_check(course_name,course_name_id)
+                    thisweek=crawler.thisweek(course_name, course_name_id)
+                    table=crawler.thisweek_course(table, thisweek)
+                    result = ""
+                    result += '<' + course_name + '><br><br>'
+                    result += crawler.print_table(table, 'a')
+                    print(result)
+                    return result
+                else:
+                    result="어떤 과목의 이번주 과제 제출 현황을 알고 싶으세요?<br>"
+                    result += '<div class="cnBtn">'
+                    for i in range(len(names)):
+                        result += '<div><button onclick="cn_btn_assign()" value="'+ names[i] + '">'+ names[i]+'</button></div>'
+                    result += '</div>'
+                    return result
             else:
-                result="어떤 과목의 과제 제출 현황을 알고 싶으세요?<br>"
-                result += '<div class="cnBtn">'
-                for i in range(len(names)):
-                   result += '<div><button onclick="cn_btn_assign()" value="'+ names[i] + '">'+ names[i]+'</button></div>'
-                result += '</div>'
-                return result
+                if in_names:
+                    print("답장 :", ftext)
+                    table = crawler.assign_check(course_name,course_name_id)
+                    result = ""
+                    result += '<' + course_name + '><br><br>'
+                    result += crawler.print_table(table, 'a')
+                    print(result)
+                    return result
+                else:
+                    result="어떤 과목의 과제 제출 현황을 알고 싶으세요?<br>"
+                    result += '<div class="cnBtn">'
+                    for i in range(len(names)):
+                        result += '<div><button onclick="cn_btn_assign()" value="'+ names[i] + '">'+ names[i]+'</button></div>'
+                    result += '</div>'
+                    return result
+
                 
         if "성적" in ftext:
             if in_names:

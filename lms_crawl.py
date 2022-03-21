@@ -296,7 +296,7 @@ class Lms_crawl:
             return t
 
         #이번주 강의 주차 찾기
-    def this_week(self, name,course_name_id):
+    def thisweek(self, name,course_name_id):
         # main
         url = 'https://cyber.inu.ac.kr/'
         self.driver.get(url)
@@ -320,18 +320,18 @@ class Lms_crawl:
                     self.driver.get(course_url)
                     element= self.driver.find_element('xpath', '//*[@id="region-main"]/div/div[1]')
                     list=element.text.split("\n")
-                    if len(list)>3: return list[7]
+                    if len(list)>3: return list[7][0]
                     else: return list[:-1]
         else:
             t = ['강의를 찾지 못했습니다.']
             return t
     #thisweek에 해당하는 테이블 출력(일단 출석기준으로만 해봄)
-    def thisweek_course(course, thisweek):
+    def thisweek_course(self, coursetable, thisweek):
         thisweek_list=[]
-        for i in range(len(course)):
-            if course[i][0]==thisweek[0]:
-                while (course[i][0]==' ')or(course[i][0]==thisweek[0]):                
-                        thisweek_list.append(course[i])
+        for i in range(len(coursetable)):
+            if coursetable[i][0] in thisweek[0]:
+                while (coursetable[i][0]==' ')or(coursetable[i][0]==thisweek[0]):                
+                        thisweek_list.append(coursetable[i])
                         i+=1
         if len(thisweek_list)==0:
             thisweek_list.append("해당주차가 없습니다")
