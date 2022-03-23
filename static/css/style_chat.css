@@ -373,3 +373,28 @@ a {
     background-color: #007bff;
     height: 1px;
 }
+
+
+
+table {
+    border-collapse: collapse;
+    border-top: 3px solid #168;
+}  
+th {
+    color: #168;
+    background: #f0f6f9;
+    text-align: center;
+}
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+th:first-child, td:first-child {
+    border-left: 0;
+}
+th:last-child, td:last-child {
+    border-right: 0;
+  }
+tr td:first-child{
+    text-align: center;
+}
