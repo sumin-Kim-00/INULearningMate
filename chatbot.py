@@ -109,11 +109,11 @@ def detect_intent_texts(crawler, project_id, session_id, texts, language_code, n
                     result="어떤 과목의 이번주 강의 출석 현황을 알고 싶으세요?<br>"
                     result += '<div class="cnBtn">'
                     for i in range(len(names)):
-                        result += '<div><button onclick="cn_btn_course()" value="'+ names[i] + '">'+ names[i]+'</button></div>'
+                        result += '<div><button onclick="cn_btn_thisweekcourse()" value="'+ names[i] + '">'+ names[i]+'</button></div>'
                     result += '</div>'
                     return result
             else:
-                if in_names:
+                if in_names: 
                     print("답장 :", ftext)
                     table = crawler.course_check(course_name,course_name_id)
                     crawler.not_checked(table)
@@ -146,7 +146,7 @@ def detect_intent_texts(crawler, project_id, session_id, texts, language_code, n
                     result="어떤 과목의 이번주 과제 제출 현황을 알고 싶으세요?<br>"
                     result += '<div class="cnBtn">'
                     for i in range(len(names)):
-                        result += '<div><button onclick="cn_btn_assign()" value="'+ names[i] + '">'+ names[i]+'</button></div>'
+                        result += '<div><button onclick="cn_btn_thisweekassign()" value="'+ names[i] + '">'+ names[i]+'</button></div>'
                     result += '</div>'
                     return result
             else:
