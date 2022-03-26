@@ -55,6 +55,12 @@
             {% csrf_token %}
             <input type="hidden" id="username" name="username" value={{username}}>
             <input type="hidden" id="password" name="password" value={{password}}>
+            
+            <div class="micArea" id="micArea" onclick="speechAsk()">               
+                <center>
+                    <img class="micPic" id="micPic" src="{% static 'img/mic.png' %}"  alt="마이크">
+                </center>
+            </div>
 
             <div class="inputArea">
                 <input type="text" id="chattext" name="chatinput" placeholder="메시지를 입력하세요" >

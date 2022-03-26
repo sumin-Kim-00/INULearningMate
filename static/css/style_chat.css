@@ -112,6 +112,34 @@ body{
 }
 
 
+.chatBody .chatFooter .micArea {
+    margin-right: 10px;
+    background-color: white;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    outline: none;
+    padding: 1px;
+    transition: 0.3s all ease;
+    width: 40px;
+}
+
+.chatBody .chatFooter .micArea:hover {
+    border-color: #007bff;
+}
+
+.chatBody .chatFooter .micArea:focus {
+    border-color: #007bff;
+}
+
+
+.chatBody .chatFooter .micArea .micPic {
+    filter: invert(39%) sepia(71%) saturate(5870%) hue-rotate(200deg) brightness(104%) contrast(110%);
+    margin-top: 5px;
+    width: 25px; 
+    height: 25px;
+}
+
+
 /* chat footer */
 .chatBody .chatFooter .inputArea {
     width: 100%;

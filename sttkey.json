@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "digital-arcade-345306",
+  "private_key_id": "a6a90fdfa85670c9290e17b6cf14923e3a6ba5c9",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDmUdz+G/+m61hG\nimiQjBASXxTFs3eYn/51SvMAZ3SmFnTHP1T8hqvj1oA9v29mNobSoe8fn9eaPIQj\nDgDKsexG1xgsTu3Z9ijBfNwpyHWzSi1mtpyeM7RKTrd4i9e/y0tRv+9pUjmtYDYo\nHe6XTxM6AxjQWrqF+ueAR09tvoMm05zAKSpv2L/eoNTiLzUtzHI6W4mQto8kJ0Gn\nClrNoPH5F/GJEuSId+cQA0sH7+/MjSa9RSOJ2XM9r+wqa1E33WMXFSblw/XiQrPs\nxcfnn1XKWMywJCxbjGBUybvqSsWiK/42x5MnYTdEWRlGHl0Fgh9bwKQPFbErnZ65\nuIPchzHFAgMBAAECggEAMlkp9Li9KcmfygfetN6RctqrKU7CsbAkCZMBTRDQnLAj\nBh1voCZ2c/+DmDv9h7wau/ffVKv2D0b0Yc9hV+4OJyxFIgZ9E10u6qE3ZcDnDfME\nusPnt+O4oVfU3rq/RrOTuwK4vO7XIfH61Mk6S4RjQRbFOWLkDH7dVZsBH436kKVe\nn6jaJMjRJpBDvDTaWkVnUB9vqM8PnbEVByS2OGIWDhlo9xtCsaeKNdB2ltUZM9UB\nq+Vt8F13bhduIZFdG9phJEXT2NjMiukyNdD8tH1rQMHDKs1VuR0jA4krasim+ejd\nhxv1zVnuehbcLl0BCJ++MiP3rJP4QS5JTm8eHx4YAQKBgQD0sKKbSLmWj2DWhAxA\nwgb7lwT23VLqIebGuMYvdIUb4oO2ijyEroWXgFLOroV37BrwTwF1q/uZLDtI8q0+\nljfM56KjU71dBENbXcrhHjdGmZl2NFp7udjscBuzvG6604sW/uzy/M1ogtoiybOu\n8+Paiqm8T9b/+cXOLebaMgn8AQKBgQDw9zBBaU8kCAsonErPe8uVAYMf01pYWKmp\ne/1m0sOlH7Xwa0Dgi5iFhPAnl2ZpUJRHn1b4wBSo37Oxd+Iey9zNSmKnMGnxFSVT\nBNci6Egoqx902cmggXxXrNFuZkVLeVDef6JJTLP0/r6rfGL4qR2Pzlf6faUxD/1Q\nG+FOWexFxQKBgCxvCwhB25nQrZgm4Ia99UCouvkNVeo4f8zkbvDdKvLWXm6+iaDa\nhF3vqpnnrUsKsBWlczFoKsc09gsYLoeoBbgK9EjOgxuqE4U68gWRVB5Y9Do35ZqE\nNDUzYoRwGneIxMBHSMYTTEXHRU9960hA98aO2aXdpcBUHiyDv2EuJwwBAoGAHWzi\nHKrCelDtI+lqDUo9wxVrMMC7gJxbI5I7kIneUFS9//zo8EK7vlpMhVksrWGkqdZg\nZYH3Q+QFan+MQlx8uykBQQ9dcI43f5rQtreM0EKNVdSelZYaXA6DiKq+fYf0Ayes\n5qySMTHGkORgpaLpND1ravBa8tHUCitNaSb7/k0CgYAgsVfcRJtHY/5nNNu+iSOv\n2N7YzIpwqGJ+h/ebnblz2XDpbgybp3whDEawvm20DT2TCV9R+FqpjNGDl+VIQKHz\nTLvolmqFbL9/tlR2eCX5zluIRiTuxCqUZ8LyQxToC7p4gJnhrLwjiXIV82PTv1Es\njz/XEO0iQ/IpeTI66Jx5mA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "cyandl423@digital-arcade-345306.iam.gserviceaccount.com",
+  "client_id": "111415995552657719101",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/cyandl423%40digital-arcade-345306.iam.gserviceaccount.com"
+}

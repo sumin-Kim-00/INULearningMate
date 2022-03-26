@@ -87,6 +87,40 @@ function sendAsk() {
 }
 
 
+function speechAsk() {
+    document.getElementById("micArea").style.backgroundColor = "#007bff";
+    document.getElementById("micPic").style.filter = "invert(100%)";
+    console.log("clicked");
+
+    xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+            var data = xhr.responseText;
+
+            var obj = JSON.parse(data);
+
+            if(obj.flag == "0"){
+                ans = obj.speechtext;
+                console.log(ans);
+                document.getElementById("chattext").value = ans;
+                sendAsk();
+                
+                remove = document.getElementById('micArea');
+                remove.removeAttribute('style');
+
+                remove = document.getElementById('micPic');
+                remove.removeAttribute('style');
+
+            }
+        }
+    };
+
+    xhr.open("POST", "speechtottext");
+    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+    xhr.send(null);
+
+}
+
 function cn_btn_course() {
     ctext = event.target.value;
     bottext = "<div class='chatMe'><span>" + ctext + "</span></div>";
@@ -138,16 +172,7 @@ function cn_btn_course() {
 
     loadingText = '<div class="chatBot"><span><div class="loading dot" id="loading"><div></div><div></div><div></div></div></span></div>'
     document.getElementById("chatbox").innerHTML += loadingText;
-    var strurl = "chat?chatinput=" + ctext + " 강의 출석"; //이 줄을 밑 주석으로 바꿔서 
-    /*
-    if ("이번주" in ftext){
-        var strurl = "chat?chatinput=" + ctext + " 이번주 강의 출석";
-    }
-    else{
-        var strurl = "chat?chatinput=" + ctext + " 강의 출석";
-    }
-
-     */
+    var strurl = "chat?chatinput=" + ctext + " 강의 출석"; 
 
     var objDiv = document.getElementById("chatbox");
     objDiv.scrollTop = objDiv.scrollHeight;
@@ -381,3 +406,4 @@ function logout(){
     sessionStorage.clear();
     location.reload();
 }
+

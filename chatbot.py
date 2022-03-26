@@ -35,16 +35,16 @@ from google.cloud import dialogflow
 # 서비스 계정 생성 후 IAM에 추가를 해야 오류가 안남!!
 # json 형식의 key는 google cloud platform - IAM 및 관리자 - 서비스 계정 - 키
 # 에서 얻을 수 있음!!!!
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = 'key.json'
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = 'chatkey.json'
 
-# 프로젝트 아이디 - diaglogflow 설정 general에서 확인
-DIALOGFLOW_PROJECT_ID = 'newagent-ocwf'
-# 언어 - diaglogflow 설정 languages에서 확인
-DIALOGFLOW_LANGUAGE_CODE = 'ko'
-# 같은 세션인지 확인하는 용도, 아무 스트링이면 ok
-SESSION_ID = 'mm'
-# 챗봇 돌릴 텍스트= TEXTS
-# TEXTS = ["알고리즘 이번 과제 몇점이야?", "지능정보시스템 강의 출석 현황 알려줘", "컴퓨터네트워크 출석 알려줘", "제출한 강의 알려줘", "안녕", "폴백 유도 텍스트"]
+# # 프로젝트 아이디 - diaglogflow 설정 general에서 확인
+# DIALOGFLOW_PROJECT_ID = 'newagent-ocwf'
+# # 언어 - diaglogflow 설정 languages에서 확인
+# DIALOGFLOW_LANGUAGE_CODE = 'ko'
+# # 같은 세션인지 확인하는 용도, 아무 스트링이면 ok
+# SESSION_ID = 'mm'
+# # 챗봇 돌릴 텍스트= TEXTS
+# # TEXTS = ["알고리즘 이번 과제 몇점이야?", "지능정보시스템 강의 출석 현황 알려줘", "컴퓨터네트워크 출석 알려줘", "제출한 강의 알려줘", "안녕", "폴백 유도 텍스트"]
 
 
 

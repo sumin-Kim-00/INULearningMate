@@ -1,28 +1,38 @@
+from __future__ import division
 import datetime
 from django.http import JsonResponse
 from django.shortcuts import redirect, render, HttpResponse
 from django.contrib import messages
 from .models import App_Session
 
+# python files
 import chatbot
 from lms_crawl import Lms_crawl
+import stt
 
+# web crawling
 import time
 import random
 from selenium import webdriver
 import requests
 from tabulate import tabulate
 
+# chatbot
 import os
 from google.cloud import dialogflow
 
-from myapp.models import App_Session
+# speech to text
+import re
+import sys
+from google.cloud import speech
+import pyaudio
+from six.moves import queue
 
+from myapp.models import App_Session
 from django.contrib.auth import authenticate, login
 
-# 첫 번째 파라미터로 요청과 관련된 여러가지 정보가 들어있는 객체를 전달해주도록 되어있음(request)
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = 'key.json'
+# 첫 번째 파라미터로 요청과 관련된 여러가지 정보가 들어있는 객체를 전달해주도록 되어있음(request)
 
 # 프로젝트 아이디 - diaglogflow 설정 general에서 확인
 DIALOGFLOW_PROJECT_ID = 'newagent-ocwf'
@@ -31,8 +41,9 @@ DIALOGFLOW_LANGUAGE_CODE = 'ko'
 # 같은 세션인지 확인하는 용도, 아무 스트링이면 ok
 SESSION_ID = 'mm'
 
-year = '2022'
-semester = '1'
+# Audio recording parameters
+RATE = 16000
+CHUNK = int(RATE / 10)  # 100ms
 
 options = webdriver.ChromeOptions()
 
@@ -150,6 +161,8 @@ def login(request):
 
 
 def chat(request):
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = 'chatkey.json'
+
     d = webdriver.Chrome(options=options)
 
     c = Lms_crawl(d)
@@ -183,6 +196,20 @@ def chat(request):
         'flag': '0'
     }
 
+    return JsonResponse(context, content_type="application/json")
+
+
+def speechtottext(request):
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = 'sttkey.json'
+    chat = stt.run()
+    
+    speechtext = chat
+    # print(chatanswer)
+
+    context = {
+        'speechtext': speechtext,
+        'flag': '0'
+    }
     return JsonResponse(context, content_type="application/json")
 
 
