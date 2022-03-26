@@ -144,11 +144,19 @@ def run():
     # for a list of supported languages.
     language_code = "ko-KR"  # a BCP-47 language tag
 
+    # 인식 비율 높일 문구
+    phrases = ["강의","출석", "성적", "과제",
+         "인천대", "인천대학교", "이러닝", "홈페이지", "사이트"]
+    boost = 3
+    speech_contexts_element = {"phrases": phrases, "boost": boost}
+    speech_contexts = [speech_contexts_element]
+
     client = speech.SpeechClient()
     config = speech.RecognitionConfig(
         encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
         sample_rate_hertz=RATE,
         language_code=language_code,
+        speech_contexts = speech_contexts
     )
 
     streaming_config = speech.StreamingRecognitionConfig(
