@@ -1,0 +1,428 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body{
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color:gray;
+}
+
+/* chat body */
+.chatBody {
+    position: relative;
+    min-width: 360px;
+    /*max-width: 450px;*/
+    /*min-height: 640px;*/
+    /*max-height: 640px;*/
+}
+
+
+/* chat box - middle area */
+.chatBody .chatBox {
+    background-color: white;
+    /* border: 1px solid #efefef; */
+    border: none;
+    padding: 10px 15px;
+    /*min-height: 540px;
+    max-height: 540px;*/
+    overflow-y: auto;
+    font-size: 15px;
+    height: 77vh;
+}
+
+
+/* chat header and footer */
+.chatBody .chatHeader {
+    background: #007bff;
+    color: white;
+    line-height: 7.5vh;
+    min-height: 55px;
+    border-radius: 5px 5px 0 0;
+    text-align: center;
+    font-size: 20px;
+}
+
+.chatBody .chatHeader .home  {
+    float: left;
+    padding : 0px 15px;
+}
+
+.home .homePic {
+    filter: invert(100%) sepia(6%) saturate(0%) hue-rotate(106deg) brightness(108%) contrast(106%);
+}
+
+
+.chatBody .chatHeader .menuButton {
+    float: right;
+    font-size: 30px;
+    padding : 0 20px;
+}
+
+
+.chatBody .chatFooter {
+    width: 100%;
+    background: #efefef;
+    border-radius: 0 0 5px 5px ;
+    height: 7.5vh;
+    min-height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+
+
+/* chat text box */
+.chatBody .chatBox .chatBot {
+    margin:15px 0;
+    text-align:left;
+}
+
+.chatBody .chatBox .chatBot span{
+    display:inline-block;
+    padding:3px 10px;
+    background-color:#007bff;
+    border-radius: 0 20px 20px 20px;
+    color:white;
+
+}
+
+.chatBody .chatBox .chatMe {
+    margin:15px 0;
+    text-align:right;
+}
+
+.chatBody .chatBox .chatMe span{
+    display:inline-block;
+    padding:3px 10px;
+    background-color:#efefef;
+    color:#333;
+    border-radius: 20px 0 20px 20px;
+    /*max-width:350px;*/
+}
+
+
+.chatBody .chatFooter .micArea {
+    margin-right: 10px;
+    background-color: white;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    outline: none;
+    padding: 1px;
+    transition: 0.3s all ease;
+    width: 40px;
+}
+
+.chatBody .chatFooter .micArea:hover {
+    border-color: #007bff;
+}
+
+.chatBody .chatFooter .micArea:focus {
+    border-color: #007bff;
+}
+
+
+.chatBody .chatFooter .micArea .micPic {
+    filter: invert(39%) sepia(71%) saturate(5870%) hue-rotate(200deg) brightness(104%) contrast(110%);
+    margin-top: 5px;
+    width: 25px; 
+    height: 25px;
+}
+
+
+/* chat footer */
+.chatBody .chatFooter .inputArea {
+    width: 100%;
+    position: relative;
+}
+
+/* chat text input*/
+.chatBody .chatFooter .inputArea input#chattext {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    outline: none;
+    padding-right: 70px;
+    font-family: 'Poppins', sans-serif;
+    transition: 0.3s all ease;
+
+
+}
+
+.chatBody .chatFooter .inputArea input#chattext:hover {
+    border-color: #007bff;
+}
+
+.chatBody .chatFooter .inputArea input#chattext:focus {
+    border-color: #007bff;
+}
+
+
+
+/* send button */
+.chatBody .chatFooter .inputArea button {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    background: transparent;
+    border: 1px solid #007bff;
+    padding: 5px 10px;
+    border-radius: 3px;
+    color: #007bff;
+    outline: none;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s all ease;
+}
+
+.chatBody .chatFooter .inputArea button:hover {
+    background: #007bff;
+    color: white;
+}
+
+.chatBody .chatFooter .inputArea input:valid ~ button {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+a {
+    color: white;
+  }
+
+.cnBtn button:hover{
+    background: #007bff;
+    color: white;
+}
+
+.cnBtn button{
+    position: relative;
+    text-align: center;
+    background-color: white;
+    /* color: #007bff; */
+    min-width: 98%;
+    min-height: 30px;
+    border-radius: 100px;
+    outline: none;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    margin: 3px;
+    transition: 0.3s all ease;
+  }
+
+
+.loading {
+    position: relative;
+    width: 96px;
+    height: 22px;
+    margin: 0 auto;
+    padding: 10px;
+}
+    
+.dot div {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 10px;
+    height: 10px;
+    margin: auto;
+    border-radius: 10px;
+    background-color: #fff;
+    transform: scale(0);
+    animation: dot 1.5s linear infinite;
+}
+    
+.dot div:nth-child(1) {
+    left: -50px;
+    animation-delay: -0.1s;
+}
+    
+.dot div:nth-child(3) {
+    right: -50px;
+    animation-delay: 0.1s;
+}
+    
+ @keyframes dot {
+    0% {
+    transform: scale(0);
+    }
+    35% {
+    transform: scale(1);
+    }
+    70% {
+    transform: scale(0);
+    }
+    100% {
+    transform: scale(0);
+    }
+}
+
+
+.genericMenu {
+    /* position: relative; */
+    overflow: hidden;
+    width: 100%;
+    padding: 10px 20px 16px;
+    background-color: white;
+    border: none;
+    text-align: center;
+    height: 8vh;
+
+}
+
+.genericMenu button {
+    display: inline-block;
+    background-color: #FDAF17;
+    color: rgb(255, 255, 255);
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    border-radius: 1.2em;
+    padding: 5px 15px;
+    transition: all 0.2s ease-in-out 0s;
+    border: #FDAF17;
+    /* margin: auto; */
+    /* display: block; */
+}
+
+.genericMenu button:hover{
+    background: white;
+    color: #FDAF17;
+}
+
+
+.shade {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    background-color: black;
+    top: 0;
+}
+
+
+.menu {
+    display: none;
+    position: absolute;
+    width: 70%;
+    min-width: 200px;
+    height: 100%;
+    float: right;
+    background-color: white;
+    top: 0;
+    right: 0;
+    border-radius: 15px 0 0 15px;
+
+}
+
+.menu .menuHeader {
+    background: #007bff;
+    color: white;
+    line-height: 7.5vh;
+    min-height: 55px;
+    border-radius: 15px 0 0 0;
+    text-align: left;
+    font-size: 20px;
+    padding-left: 20px;
+}
+
+.menuBody {
+    height : 85vh;
+}
+
+.menuFooter {
+    height : 6.4vh;
+}
+
+.menu .menuBtn {
+    width: 90%;
+    margin: auto;
+    padding: 10px 10px 10px 0;
+    border-radius: 10px;
+}
+.menu .menuBtnBtn {
+    border-radius: 10px;
+    background-color: white;
+    color: #007bff;
+    border: none;
+    text-align: left;
+    font-size: 16px;
+    margin-left: 10px;
+    width: 80%;
+}
+
+.menu .menuBtnPic {
+    height: 16px;
+    vertical-align: middle;
+    filter: invert(39%) sepia(71%) saturate(5870%) hue-rotate(200deg) brightness(104%) contrast(110%);
+}
+
+
+.menu .profile {
+    height : 26vh;
+}
+.menu .profile .profilePic {
+    width: 60px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    margin-top: 70px;
+    border-radius: 70%;
+    border: 1px solid #000000;
+    filter: invert(39%) sepia(71%) saturate(5870%) hue-rotate(200deg) brightness(104%) contrast(110%);
+}
+
+.menu .profile .username {
+    text-align: center;
+    font-size: 20px;
+    color: #007bff;
+}
+
+.menu .line {
+    width: 90%;
+    margin: auto;
+    position: relative;
+    margin-bottom: 7px;
+    border: 0;
+    background-color: #007bff;
+    height: 1px;
+}
+
+
+
+table {
+    border-collapse: collapse;
+    border-top: 3px solid #168;
+}  
+th {
+    color: #168;
+    background: #f0f6f9;
+    text-align: center;
+}
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+th:first-child, td:first-child {
+    border-left: 0;
+}
+th:last-child, td:last-child {
+    border-right: 0;
+  }
+tr td:first-child{
+    text-align: center;
+}

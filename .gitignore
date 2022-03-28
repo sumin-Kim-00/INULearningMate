@@ -1,0 +1,5 @@
+.vscode/launch.json
+db.sqlite3
+sttkey.json
+chatkey.json
+__pycache__/
