@@ -166,7 +166,6 @@ def detect_intent_texts(crawler, project_id, session_id, texts, language_code, n
                     result += '</div>'
                     return result
 
-                
         if "성적" in ftext:
             if in_names:
                 print("답장 :", ftext)
@@ -183,10 +182,24 @@ def detect_intent_texts(crawler, project_id, session_id, texts, language_code, n
                    result += '<div><button onclick="cn_btn_grade()" value="'+ names[i] + '">'+ names[i]+'</button></div>'
                 result += '</div>'
                 return result
+        elif "공지" in ftext:
+            if in_names:
+                print("답장 :", ftext)
+                result = crawler.notice(course_name,course_name_id)
+                #result += '<' + course_name + '><br><br>'
+                print(result)
+                return result
+            else:
+                result="어떤 과목의 성적을 알고 싶으세요?<br>"
+                result += '<div class="cnBtn">'
+                for i in range(len(names)):
+                   result += '<div><button onclick="cn_btn_notice()" value="'+ names[i] + '">'+ names[i]+'</button></div>'
+                result += '</div>'
+                return result
         else:
             print("답장 :", ftext)
             return ftext
-        print()
+
 
 '''
 options = webdriver.ChromeOptions()

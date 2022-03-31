@@ -336,3 +336,48 @@ class Lms_crawl:
         if len(thisweek_list)==0:
             thisweek_list.append("해당주차가 없습니다")
         return thisweek_list
+    
+    #미완성
+    def notice(self,name,course_name_number):
+        url = 'https://cyber.inu.ac.kr/'
+        self.driver.get(url)
+        find = False
+        hrefs=self.driver.find_elements_by_css_selector(".course_link") #접근
+        full_course_name=[]
+        course_name=[]
+        tmp=[]
+        for i in hrefs:
+            full_course_name.append(i.text)
+        #이름 가공
+        for i in range(len(full_course_name)):
+            tmp.append(full_course_name[i].split("\n"))
+            course_name.append(tmp[i][1])
+            if("NEW" in course_name[i]):
+                course_name[i]=course_name[i][:-3]
+            course_name[i]=course_name[i][:-19]  
+            
+        if name in course_name:
+            find = True        
+            if find:
+                try:
+                    course_main=('https://cyber.inu.ac.kr/course/view.php?id='+str(course_name_number[name]))
+                    self.driver.get(course_main)
+                    self.driver.find_element('xpath', '//*[@id="page-container"]/div[1]/div/div/div/div[2]/div/a').click()
+                    notice_list=self.driver.find_elements_by_css_selector(".list") #접근
+                    
+                    tmp=[]
+                    notice=[]
+                    notice_link=[]
+                    for i in notice_list:
+                        tmp.append(i.text)
+                    for i in range(len(tmp)):
+                        notice.append(tmp[i].split("\n"))
+                    return notice[1]
+                except:
+                    alert= self.driver.find_element('xpath', '//*[@id="region-main"]/div/div[1]')
+                    return alert.text[:-2]
+                
+        else:
+            t = ['강의를 찾지 못했습니다.']
+            return t
+                
