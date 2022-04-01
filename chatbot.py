@@ -185,8 +185,10 @@ def detect_intent_texts(crawler, project_id, session_id, texts, language_code, n
         elif "공지" in ftext:
             if in_names:
                 print("답장 :", ftext)
-                result = crawler.notice(course_name,course_name_id)
-                #result += '<' + course_name + '><br><br>'
+                table = crawler.notice(course_name,course_name_id)
+                result = ""
+                result += '<' + course_name + '><br><br>'
+                result += crawler.print_table(table, 'n')
                 print(result)
                 return result
             else:

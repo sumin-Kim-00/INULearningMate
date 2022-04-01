@@ -87,6 +87,8 @@ class Lms_crawl:
             return(tabulate(table, headers=["주", "과제", "종료 일시", "제출", "성적"], tablefmt="html"))
         elif ttype == 'g':
             return(tabulate(table, headers=["성적 항목", "성적", "석차", "평균", "피드백"], tablefmt="html"))
+        elif ttype == 'n':
+            return(tabulate(table, headers=['번호', '제목', '작성자', '작성일', '수정일', '조회수'], tablefmt="html"))
         else:
             return('잘못된 형식입니다.')
         
@@ -363,16 +365,21 @@ class Lms_crawl:
                     course_main=('https://cyber.inu.ac.kr/course/view.php?id='+str(course_name_number[name]))
                     self.driver.get(course_main)
                     self.driver.find_element('xpath', '//*[@id="page-container"]/div[1]/div/div/div/div[2]/div/a').click()
-                    notice_list=self.driver.find_elements_by_css_selector(".list") #접근
-                    
-                    tmp=[]
-                    notice=[]
-                    notice_link=[]
-                    for i in notice_list:
-                        tmp.append(i.text)
-                    for i in range(len(tmp)):
-                        notice.append(tmp[i].split("\n"))
-                    return notice[1]
+                    tbody = self.driver.find_element('xpath', '//*[@id="ubboard_list_form"]/table/tbody')
+                    rows = tbody.find_elements_by_tag_name("tr")
+                    table = []
+                    for row in rows:
+                        trtable = []
+                        tds = row.find_elements_by_tag_name("td")        
+                        for td in tds:
+                            tdtable = []
+                            tdtext = td.text.split("\n")
+                            tdtable.append(tdtext)                 
+                            tdtable = sum(tdtable, [])
+                            trtable.append(tdtable)
+                        trtable = sum(trtable, [])          
+                        table.append(trtable)
+                    return table
                 except:
                     alert= self.driver.find_element('xpath', '//*[@id="region-main"]/div/div[1]')
                     return alert.text[:-2]
