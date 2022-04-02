@@ -192,7 +192,7 @@ def detect_intent_texts(crawler, project_id, session_id, texts, language_code, n
                 print(result)
                 return result
             else:
-                result="어떤 과목의 성적을 알고 싶으세요?<br>"
+                result="어떤 과목의 공지를 알고 싶으세요?<br>"
                 result += '<div class="cnBtn">'
                 for i in range(len(names)):
                    result += '<div><button onclick="cn_btn_notice()" value="'+ names[i] + '">'+ names[i]+'</button></div>'
