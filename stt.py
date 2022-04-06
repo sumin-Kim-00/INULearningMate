@@ -146,7 +146,7 @@ def run():
 
     # 인식 비율 높일 문구
     phrases = ["강의","출석", "성적", "과제",
-         "인천대", "인천대학교", "이러닝", "홈페이지", "사이트"]
+         "인천대", "인천대학교", "이러닝", "홈페이지", "사이트", "공지"]
     boost = 3
     speech_contexts_element = {"phrases": phrases, "boost": boost}
     speech_contexts = [speech_contexts_element]
