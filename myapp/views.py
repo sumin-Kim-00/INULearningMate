@@ -201,15 +201,26 @@ def chat(request):
 
 def speechtottext(request):
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = 'sttkey.json'
-    chat = stt.run()
-    
-    speechtext = chat
-    # print(chatanswer)
+    try:
+        chat = stt.run()
+        
+        speechtext = chat
 
-    context = {
-        'speechtext': speechtext,
-        'flag': '0'
-    }
+        context = {
+            'speechtext': speechtext,
+            'flag': '0'
+        }
+    
+    except OSError as e:
+        speechtext = "연결 가능한 마이크가 없습니다."
+        print(speechtext)
+
+        context = {
+            'speechtext': speechtext,
+            'flag': '1'
+        }
+        return JsonResponse(context, content_type="application/json")
+
     return JsonResponse(context, content_type="application/json")
 
 
