@@ -59,7 +59,7 @@ function sendAsk() {
             var data = xhr.responseText;
 
             var obj = JSON.parse(data);
-
+            
             if(obj.flag == "0"){
                 ans = obj.chatanswer
 
@@ -77,6 +77,7 @@ function sendAsk() {
                 document.getElementById("chattext").value = "";
                 document.getElementById("chattext").focus();
             }
+            
         }
     };
 
@@ -90,7 +91,7 @@ function sendAsk() {
 function speechAsk() {
     document.getElementById("micArea").style.backgroundColor = "#007bff";
     document.getElementById("micPic").style.filter = "invert(100%)";
-    console.log("clicked");
+    //console.log("clicked");
 
     xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
@@ -99,9 +100,10 @@ function speechAsk() {
 
             var obj = JSON.parse(data);
 
+            // 정상
             if(obj.flag == "0"){
                 ans = obj.speechtext;
-                console.log(ans);
+                //console.log(ans);
                 document.getElementById("chattext").value = ans;
                 sendAsk();
                 
@@ -111,6 +113,20 @@ function speechAsk() {
                 remove = document.getElementById('micPic');
                 remove.removeAttribute('style');
 
+            }
+
+             // OSError - ex) 마이크 없음
+             else if(obj.flag == "1"){
+                ans = obj.speechtext;
+                //console.log(ans);
+                bottext = "<div class='chatBot'><span>" + ans + "</span></div>";
+                document.getElementById("chatbox").innerHTML += bottext;
+                
+                remove = document.getElementById('micArea');
+                remove.removeAttribute('style');
+
+                remove = document.getElementById('micPic');
+                remove.removeAttribute('style');
             }
         }
     };
