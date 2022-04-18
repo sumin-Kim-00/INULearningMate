@@ -75,15 +75,27 @@ def click_notice(name,course_name_number):
                 driver.find_element('xpath', '//*[@id="page-container"]/div[1]/div/div/div/div[2]/div/a').click()
                 notice_link=[]
                 notice_a=[]
-                notice_td=driver.find_elements_by_tag_name("td")  #***********************************************************************************************
+                notice_td=driver.find_elements_by_tag_name("td")  
+
+                #***********************************************************************************************
                 for i in notice_td:
                     notice_a.append(i.find_elements_by_tag_name("a"))
-                    notice_link.append(i.get_attribute('href')) 
-                return notice_a.text #notice_link=href 크롤링 #**********************************************************************************************
+
+
+                elems = driver.find_elements_by_xpath("//a[@href]")
+                for elem in elems:
+                    if "https://cyber.inu.ac.kr/mod/ubboard/article.php?id=" in elem.get_attribute("href"):
+                        notice_link.append(elem.get_attribute("href"))
+
+
+                #**********************************************************************************************
+
+                return notice_link #notice_link=href 크롤링 
                 # 의문인 부분: a태그 부분 내용은 크롤링이 되는데 그거의 href는 none으로 없다고 나옴
-            except:
-                alert= driver.find_element('xpath', '//*[@id="region-main"]/div/div[1]')
-                return alert.text[:-2]
+            except Exception as e:
+                #alert= driver.find_element('xpath', '//*[@id="region-main"]/div/div[1]')
+                #return alert.text[:-2]
+                print(e)
 
     else:
         t = ['강의를 찾지 못했습니다.']
@@ -101,4 +113,3 @@ login(idd,pw)
 names = find_course()
 list=click_notice('공직사회의이해',names)
 print(list)
-
