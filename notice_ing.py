@@ -1,4 +1,5 @@
 #의문인 부분: a태그 부분 내용은 크롤링이 되는데 그거의 href는 none으로 없다고 나옴
+#쥬피터에서 하던대로 올린거 
 
 import random
 from bs4 import BeautifulSoup
