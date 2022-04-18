@@ -121,7 +121,6 @@
 </body>
 </html>
 
-
 <script>
 
 var input = document.getElementById("chattext");
@@ -131,5 +130,59 @@ input.addEventListener("keyup", function(event) {
         document.getElementById("sendbtn").click();
     }
 });
+
+function replace(url) {
+    url= url.replace(/&/g,"%26").replace(/\+/g,"%2B");
+    return url;
+}
+
+function getNotice(link, name) {
+    notice = replace(link);
+
+    addtext = "<div class='chatMe'> <span>" + name + "</span></div>";
+    document.getElementById("chatbox").innerHTML += addtext;
+    
+    loadingText = '<div class="chatBot"><span><div class="loading dot" id="loading"><div></div><div></div><div></div></div></span></div>'
+    document.getElementById("chatbox").innerHTML += loadingText;
+
+    var strurl = "notice?noticeinput=" + notice;
+    var objDiv = document.getElementById("chatbox");
+    objDiv.scrollTop = objDiv.scrollHeight;
+
+
+    xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+            var data = xhr.responseText;
+
+            var obj = JSON.parse(data);
+            
+            if(obj.flag == "0"){
+                ans = obj.notice;
+
+                div = document.getElementById('loading');
+                divParent = div.parentNode.parentNode;
+                divParent.remove();
+
+                bottext = "<div class='chatBot'><span>" + ans + "</span></div>";
+                document.getElementById("chatbox").innerHTML += bottext;
+
+
+                var objDiv = document.getElementById("chatbox");
+                objDiv.scrollTop = objDiv.scrollHeight;
+
+                document.getElementById("chattext").value = "";
+                document.getElementById("chattext").focus();
+            }
+            
+        }
+    };
+
+    xhr.open("GET", strurl);
+    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+    xhr.send(null);
+
+    
+}
 
 </script>

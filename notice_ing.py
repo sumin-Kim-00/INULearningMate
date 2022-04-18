@@ -110,3 +110,9 @@ names = find_course()
 text, link = click_notice('공직사회의이해',names)
 print(text)
 print(link)
+
+driver.get(link[1])
+    
+element = driver.find_element('class name', 'text_to_html')
+
+print(element.get_attribute("InnerHTML"))

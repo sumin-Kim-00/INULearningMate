@@ -7,5 +7,6 @@ urlpatterns = [
     path('login', views.login, name='login'),
     path('chat', views.chat, name='chat'),
     path('speechtottext', views.speechtottext, name='speechtottext'),
+    path('notice', views.notice, name='notice'),
     path('logout', views.logout, name='logout'),
 ]

@@ -61,7 +61,7 @@ function sendAsk() {
             var obj = JSON.parse(data);
             
             if(obj.flag == "0"){
-                ans = obj.chatanswer
+                ans = obj.chatanswer;
 
                 div = document.getElementById('loading');
                 divParent = div.parentNode.parentNode;
@@ -157,7 +157,7 @@ function cn_btn_course() {
             var obj = JSON.parse(data);
 
             if(obj.flag == "0"){
-                ans = obj.chatanswer
+                ans = obj.chatanswer;
 
                 div = document.getElementById('loading');
                 divParent = div.parentNode.parentNode;
@@ -200,7 +200,7 @@ function cn_btn_course() {
             var obj = JSON.parse(data);
 
             if(obj.flag == "0"){
-                ans = obj.chatanswer
+                ans = obj.chatanswer;
 
                 div = document.getElementById('loading');
                 divParent = div.parentNode.parentNode;
@@ -241,7 +241,7 @@ function cn_btn_thisweekcourse() {
             var obj = JSON.parse(data);
 
             if(obj.flag == "0"){
-                ans = obj.chatanswer
+                ans = obj.chatanswer;
 
                 div = document.getElementById('loading');
                 divParent = div.parentNode.parentNode;
@@ -285,7 +285,7 @@ function cn_btn_assign() {
             var obj = JSON.parse(data);
 
             if(obj.flag == "0"){
-                ans = obj.chatanswer
+                ans = obj.chatanswer;
 
                 div = document.getElementById('loading');
                 divParent = div.parentNode.parentNode;
@@ -329,7 +329,7 @@ function cn_btn_thisweekassign() {
             var obj = JSON.parse(data);
 
             if(obj.flag == "0"){
-                ans = obj.chatanswer
+                ans = obj.chatanswer;
 
                 div = document.getElementById('loading');
                 divParent = div.parentNode.parentNode;
@@ -373,7 +373,7 @@ function cn_btn_grade() {
             var obj = JSON.parse(data);
 
             if(obj.flag == "0"){
-                ans = obj.chatanswer
+                ans = obj.chatanswer;
 
                 div = document.getElementById('loading');
                 divParent = div.parentNode.parentNode;
@@ -417,7 +417,7 @@ function cn_btn_grade() {
             var obj = JSON.parse(data);
 
             if(obj.flag == "0"){
-                ans = obj.chatanswer
+                ans = obj.chatanswer;
 
                 div = document.getElementById('loading');
                 divParent = div.parentNode.parentNode;
@@ -461,7 +461,7 @@ function cn_btn_notice() {
             var obj = JSON.parse(data);
 
             if(obj.flag == "0"){
-                ans = obj.chatanswer
+                ans = obj.chatanswer;
 
                 div = document.getElementById('loading');
                 divParent = div.parentNode.parentNode;

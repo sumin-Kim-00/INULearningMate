@@ -88,7 +88,7 @@ class Lms_crawl:
         elif ttype == 'g':
             return(tabulate(table, headers=["성적 항목", "성적", "석차", "평균", "피드백"], tablefmt="html"))
         elif ttype == 'n':
-            return(tabulate(table, headers=['번호', '제목', '작성자', '작성일', '수정일', '조회수'], tablefmt="html"))
+            return(tabulate(table, headers=['번호', '제목', '작성자', '작성일', '수정일', '조회수'], tablefmt="unsafehtml"))
         else:
             return('잘못된 형식입니다.')
         
@@ -339,7 +339,6 @@ class Lms_crawl:
             thisweek_list.append("해당주차가 없습니다")
         return thisweek_list
     
-    #미완성
     def notice(self,name,course_name_number):
         url = 'https://cyber.inu.ac.kr/'
         self.driver.get(url)
@@ -379,6 +378,20 @@ class Lms_crawl:
                             trtable.append(tdtable)
                         trtable = sum(trtable, [])          
                         table.append(trtable)
+
+                    # 해당 공지 링크
+                    notice_link = []
+                    elems = self.driver.find_elements_by_xpath("//a[@href]")
+                    for elem in elems:
+                        if "https://cyber.inu.ac.kr/mod/ubboard/article.php?id=" in elem.get_attribute("href"):
+                            notice_link.append(elem.get_attribute("href"))
+
+                    # 공지 이름에 href 추가
+                    i = 0
+                    for td in table:
+                        td[1] = "<a href='javascript:void(0);'" + ' onclick="getNotice(' + "'" + notice_link[i] + "', '" + td[1] + "'" +');">' + td[1] + "</a>"
+                        i += 1
+
                     return table
                 except:
                     alert= self.driver.find_element('xpath', '//*[@id="region-main"]/div/div[1]')

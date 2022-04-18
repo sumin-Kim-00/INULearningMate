@@ -198,6 +198,37 @@ def chat(request):
 
     return JsonResponse(context, content_type="application/json")
 
+def notice(request):
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = 'chatkey.json'
+
+    d = webdriver.Chrome(options=options)
+
+    c = Lms_crawl(d)
+
+    user = request.session['username']
+    pw = request.session['password']
+
+    c.login(user, pw)
+
+    # 공지 링크
+    noticelink = request.GET['noticeinput']
+
+    d.get(noticelink)
+    
+    element = d.find_element('class name', 'text_to_html')
+    notice = element.text
+    notice = notice.replace("\n", "<br>")
+
+
+    context = {
+        'username': user,
+        'password': pw,
+        'notice': notice,
+        'flag': '0'
+    }
+
+    return JsonResponse(context, content_type="application/json")
+
 
 def speechtottext(request):
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = 'sttkey.json'
