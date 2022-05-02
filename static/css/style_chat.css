@@ -290,13 +290,12 @@ a {
     background-color: #FDAF17;
     color: rgb(255, 255, 255);
     font-family: 'Poppins', sans-serif;
-    font-size: 13px;
-    border-radius: 1.2em;
-    padding: 5px 15px;
+    font-size: 15px;
+    border-radius: 1.0em;
+    padding: 3px 20px;
     transition: all 0.2s ease-in-out 0s;
     border: #FDAF17;
-    /* margin: auto; */
-    /* display: block; */
+    margin: 0px 1px;
 }
 
 .genericMenu button:hover{
