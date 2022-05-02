@@ -353,49 +353,6 @@ function cn_btn_thisweekassign() {
     xhr.send(null);
 }
 
-function cn_btn_grade() {
-    ctext = event.target.value;
-    bottext = "<div class='chatMe'><span>" + ctext + "</span></div>";
-    document.getElementById("chatbox").innerHTML += bottext;
-
-    loadingText = '<div class="chatBot"><span><div class="loading dot" id="loading"><div></div><div></div><div></div></div></span></div>'
-    document.getElementById("chatbox").innerHTML += loadingText;
-
-    var strurl = "chat?chatinput=" + ctext + " 성적 확인";
-    var objDiv = document.getElementById("chatbox");
-    objDiv.scrollTop = objDiv.scrollHeight;
-
-    xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4) {
-            var data = xhr.responseText;
-
-            var obj = JSON.parse(data);
-
-            if(obj.flag == "0"){
-                ans = obj.chatanswer;
-
-                div = document.getElementById('loading');
-                divParent = div.parentNode.parentNode;
-                divParent.remove();
-
-                bottext = "<div class='chatBot'><span>" + ans + "</span></div>";
-                document.getElementById("chatbox").innerHTML += bottext;
-
-
-                var objDiv = document.getElementById("chatbox");
-                objDiv.scrollTop = objDiv.scrollHeight;
-
-                document.getElementById("chattext").value = "";
-                document.getElementById("chattext").focus();
-            }
-        }
-    };
-
-    xhr.open("GET", strurl);
-    xhr.setRequestHeader("X-CSRFToken", csrftoken);
-    xhr.send(null);
-}
 
 function cn_btn_grade() {
     ctext = event.target.value;
