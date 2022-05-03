@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@700&display=swap');
 
 * {
     margin: 0;
@@ -8,23 +8,24 @@
 
 
 body{
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Bitter', serif;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color:#094A9A;
+    background-color:#094A9A !important;
     
 }
 
-h2{
-    font-family: 'Bitter', sans-serif;
-}
 
 /* login body - screen */
 .loginBody {
+    /*min-width: 360px;
+    max-width: 360px;
+    min-height: 640px;
+    max-height: 640px;*/
     background-color:#094A9A;
-    padding: 15vh 50px;
+    padding: 150px 60px;
     border-radius: 5px;
     height: 100vh;
     width: 100vh
@@ -34,8 +35,9 @@ h2{
 
 /* login box - inner box*/
 .loginBox {
-    padding: 60px 30px;
-    height: 450px;
+    padding: 70px 30px;
+    /* width: 70vh; */
+    height: 400px;
     border-radius:20px;
     background: white;
     color: #094A9A;
@@ -48,12 +50,12 @@ h2{
 .loginBody .inputIdPw {
     width: 100%;
     position: relative;
-    margin-top: 47px;
+    margin-top: 10px;
 }
 
 /* login typing part - text*/
 .loginBody .inputIdPw .text {
-    background-color: #2965af;
+    background-color: #376aa8;
     padding: 3px;
     border: 1px solid transparent;
     border-radius: 3px;
@@ -79,7 +81,7 @@ h2{
     font-size: 15px;
     transition: 0.3s all ease;
     float:right;
-    background-color: #E8F0FE;
+    background-color: #c1d6f0;
     display:inline;
     width: 78%;
     margin-bottom: 5px;
@@ -105,8 +107,8 @@ h2{
     outline: none;
     transition: 0.3s all ease;
     font-size: 15px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .loginBody .loginBox button:hover {
@@ -126,3 +128,7 @@ h2{
     margin-bottom: 10px;
 }
 
+.logoPic {
+    width:120px;
+    height:70px;
+}
