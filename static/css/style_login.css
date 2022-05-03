@@ -8,15 +8,18 @@
 
 
 body{
-    font-family: 'Bitter', sans-serif;
+    font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color:#094A9A !important;
+    background-color:#094A9A;
     
 }
 
+h2{
+    font-family: 'Bitter', sans-serif;
+}
 
 /* login body - screen */
 .loginBody {
@@ -76,7 +79,7 @@ body{
     font-size: 15px;
     transition: 0.3s all ease;
     float:right;
-    background-color: #c1d6f0;
+    background-color: #E8F0FE;
     display:inline;
     width: 78%;
     margin-bottom: 5px;
