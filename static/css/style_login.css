@@ -13,7 +13,7 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color:rgb(255, 255, 255);
+    background-color:#094A9A !important;
     
 }
 
@@ -24,7 +24,7 @@ body{
     max-width: 360px;
     min-height: 640px;
     max-height: 640px;*/
-    background-color:white;
+    background-color:#094A9A;
     padding: 150px 60px;
     border-radius: 5px;
     height: 100vh;
@@ -39,8 +39,8 @@ body{
     /* width: 70vh; */
     height: 400px;
     border-radius:20px;
-    background: #0030F2;
-    color: white;
+    background: white;
+    color: #094A9A;
     text-align: center;
     font-size: 15px;
 
@@ -55,7 +55,7 @@ body{
 
 /* login typing part - text*/
 .loginBody .inputIdPw .text {
-    background-color: white;
+    background-color: #376aa8;
     padding: 3px;
     border: 1px solid transparent;
     border-radius: 3px;
@@ -63,7 +63,7 @@ body{
     display: grid;
     font-family: 'Poppins', sans-serif;
     font-size: 15px;
-    color: #0030F2;
+    color: white;
     text-align: center;
     float:left;
     display:inline;
@@ -81,28 +81,29 @@ body{
     font-size: 15px;
     transition: 0.3s all ease;
     float:right;
+    background-color: #c1d6f0;
     display:inline;
     width: 78%;
     margin-bottom: 5px;
 }
 
 .loginBody .loginBox .inputIdPw input:hover {
-    border-color: #0030F2;
+    border-color: #094A9A;
 }
 
 .loginBody .loginBox .inputIdPw input:focus {
-    border-color: #0030F2;
+    border-color: #094A9A;
 }
 
 
 /* login typing part - button */
 .loginBody .loginBox .inputIdPw button {
-    background: white;
-    border: 1px solid #0030F2;
+    background: #2965af;
+    border: 1px solid #2965af;
     width: 100%;
     padding: 5px 0px;
     border-radius: 3px;
-    color: #0030F2;
+    color: white;
     outline: none;
     transition: 0.3s all ease;
     font-size: 15px;
@@ -112,12 +113,12 @@ body{
 
 .loginBody .loginBox button:hover {
     border: 1px solid white;
-    background: #0030F2;
+    background: #094A9A;
     color: white;
 }
 
 .loginBody .loginBox .loginFind {
-    color: white;
+    color: #094A9A;
     font-size: 10px;
 
 }

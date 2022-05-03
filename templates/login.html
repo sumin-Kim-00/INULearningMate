@@ -11,7 +11,8 @@
 <body>
 <div class="loginBody">
     <div class="loginBox" id="loginbox">
-        <h2>INU<br>LearningMate</h2>        
+        <img class="logoPic" src="{% static 'img/logo.png' %}" alt="INU로고">
+        <h2>LearningMate</h2>        
         <form action="{% url 'login'%}" method="POST">
             {% csrf_token %}
             <div class="inputIdPw">
