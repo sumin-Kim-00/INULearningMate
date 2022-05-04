@@ -20,20 +20,14 @@ body{
 .chatBody {
     position: relative;
     min-width: 360px;
-    /*max-width: 450px;*/
-    /*min-height: 640px;*/
-    /*max-height: 640px;*/
 }
 
 
 /* chat box - middle area */
 .chatBody .chatBox {
     background-color: white;
-    /* border: 1px solid #efefef; */
     border: none;
     padding: 10px 15px;
-    /*min-height: 540px;
-    max-height: 540px;*/
     overflow-y: auto;
     font-size: 15px;
     height: 77vh;
@@ -331,7 +325,7 @@ a {
 }
 
 .menu .menuHeader {
-    background: #007bff;
+    background: #094A9A;
     color: white;
     line-height: 7.5vh;
     min-height: 55px;
@@ -342,7 +336,7 @@ a {
 }
 
 .menuBody {
-    height : 85vh;
+    height : 85.5vh;
 }
 
 .menuFooter {
@@ -352,13 +346,13 @@ a {
 .menu .menuBtn {
     width: 90%;
     margin: auto;
-    padding: 10px 10px 10px 0;
+    padding: 5px 10px 10px 30px;
     border-radius: 10px;
 }
 .menu .menuBtnBtn {
     border-radius: 10px;
     background-color: white;
-    color: #007bff;
+    color: #094A9A;
     border: none;
     text-align: left;
     font-size: 16px;
@@ -369,7 +363,7 @@ a {
 .menu .menuBtnPic {
     height: 16px;
     vertical-align: middle;
-    filter: invert(39%) sepia(71%) saturate(5870%) hue-rotate(200deg) brightness(104%) contrast(110%);
+    filter: invert(25%) sepia(91%) saturate(983%) hue-rotate(185deg) brightness(87%) contrast(105%);
 }
 
 
@@ -383,23 +377,23 @@ a {
     margin-top: 70px;
     border-radius: 70%;
     border: 1px solid #000000;
-    filter: invert(39%) sepia(71%) saturate(5870%) hue-rotate(200deg) brightness(104%) contrast(110%);
+    filter: invert(25%) sepia(91%) saturate(983%) hue-rotate(185deg) brightness(87%) contrast(105%);
 }
 
 .menu .profile .username {
     text-align: center;
     font-size: 20px;
-    color: #007bff;
+    color: #094A9A;
 }
 
 .menu .line {
-    width: 90%;
+    width: 0%;
     margin: auto;
     position: relative;
-    margin-bottom: 7px;
+    margin-bottom: 5px;
     border: 0;
-    background-color: #007bff;
-    height: 1px;
+    background-color: #094A9A;
+    /* height: 1px; */
 }
 
 
