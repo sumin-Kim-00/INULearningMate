@@ -14,6 +14,7 @@ body{
     align-items: center;
     min-height: 100vh;
     background-color:rgb(255, 255, 255);
+
 }
 
 /* chat body */
@@ -25,7 +26,7 @@ body{
 
 /* chat box - middle area */
 .chatBody .chatBox {
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     border: none;
     padding: 10px 15px;
     overflow-y: auto;
@@ -85,9 +86,9 @@ body{
 .chatBody .chatBox .chatBot span{
     display:inline-block;
     padding:3px 10px;
-    background-color:#007bff;
+    background-color:#e2edf8;
     border-radius: 0 20px 20px 20px;
-    color:white;
+    color:#000000;
 
 }
 
@@ -99,8 +100,8 @@ body{
 .chatBody .chatBox .chatMe span{
     display:inline-block;
     padding:3px 10px;
-    background-color:#efefef;
-    color:#333;
+    background-color:#2161ae;
+    color:rgb(255, 255, 255);
     border-radius: 20px 0 20px 20px;
     /*max-width:350px;*/
 }
@@ -118,11 +119,11 @@ body{
 }
 
 .chatBody .chatFooter .micArea:hover {
-    border-color: #007bff;
+    border-color: #094A9A;
 }
 
 .chatBody .chatFooter .micArea:focus {
-    border-color: #007bff;
+    border-color: #094A9A;
 }
 
 
@@ -155,11 +156,11 @@ body{
 }
 
 .chatBody .chatFooter .inputArea input#chattext:hover {
-    border-color: #007bff;
+    border-color: #094A9A;
 }
 
 .chatBody .chatFooter .inputArea input#chattext:focus {
-    border-color: #007bff;
+    border-color: #094A9A;
 }
 
 
@@ -171,10 +172,10 @@ body{
     right: 10px;
     transform: translateY(-50%);
     background: transparent;
-    border: 1px solid #007bff;
+    border: 1px solid #094A9A;
     padding: 5px 10px;
     border-radius: 3px;
-    color: #007bff;
+    color: #094A9A;
     outline: none;
     cursor: pointer;
     opacity: 0;
@@ -183,7 +184,7 @@ body{
 }
 
 .chatBody .chatFooter .inputArea button:hover {
-    background: #007bff;
+    background: #094A9A;
     color: white;
 }
 
@@ -197,7 +198,7 @@ a {
   }
 
 .cnBtn button:hover{
-    background: #007bff;
+    background: #094A9A;
     color: white;
 }
 
@@ -236,7 +237,7 @@ a {
     height: 10px;
     margin: auto;
     border-radius: 10px;
-    background-color: #fff;
+    background-color: #3d8ced;;
     transform: scale(0);
     animation: dot 1.5s linear infinite;
 }
@@ -400,10 +401,10 @@ a {
 
 table {
     border-collapse: collapse;
-    border-top: 3px solid #168;
+    border-top: 3px solid #094A9A;
 }  
 th {
-    color: #168;
+    color: #094A9A;
     background: #f0f6f9;
     text-align: center;
 }
