@@ -128,7 +128,7 @@ body{
 
 
 .chatBody .chatFooter .micArea .micPic {
-    filter: invert(39%) sepia(71%) saturate(5870%) hue-rotate(200deg) brightness(104%) contrast(110%);
+    filter: invert(25%) sepia(91%) saturate(983%) hue-rotate(185deg) brightness(87%) contrast(105%);
     margin-top: 5px;
     width: 25px; 
     height: 25px;
@@ -237,7 +237,7 @@ a {
     height: 10px;
     margin: auto;
     border-radius: 10px;
-    background-color: #3d8ced;;
+    background-color: #094A9A;
     transform: scale(0);
     animation: dot 1.5s linear infinite;
 }
@@ -401,16 +401,19 @@ a {
 
 table {
     border-collapse: collapse;
-    border-top: 3px solid #094A9A;
+    border-top: 2px solid #094A9A;
 }  
-th {
-    color: #094A9A;
-    background: #f0f6f9;
-    text-align: center;
-}
-th, td {
+td {
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #e2edf8;
+    background-color: white;
+}
+th {
+    background: #fcd68b;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #e2edf8;
+    color: black;
 }
 th:first-child, td:first-child {
     border-left: 0;
