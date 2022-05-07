@@ -101,7 +101,7 @@ def detect_intent_texts(crawler, project_id, session_id, texts, language_code, n
                     table=crawler.thisweek_course(table, thisweek)
                     crawler.not_checked(table)
                     result = ""
-                    result += '<'+ course_name +'><br><br>'
+                    result += '<div class="container"><h4>'+ course_name +'</h4></div>'
                     result += crawler.print_table(table, 'c')
                     print(result)
                     return result
@@ -118,7 +118,8 @@ def detect_intent_texts(crawler, project_id, session_id, texts, language_code, n
                     table = crawler.course_check(course_name,course_name_id)
                     crawler.not_checked(table)
                     result = ""
-                    result += '<'+ course_name +'><br><br>'
+                    #result += '<'+ course_name +'><br><br>'
+                    result += '<div class="container"><h4>'+ course_name +'</h4></div>'
                     result += crawler.print_table(table, 'c')
                     print(result)
                     return result
@@ -138,7 +139,7 @@ def detect_intent_texts(crawler, project_id, session_id, texts, language_code, n
                     thisweek=crawler.thisweek(course_name, course_name_id)
                     table=crawler.thisweek_course(table, thisweek)
                     result = ""
-                    result += '<' + course_name + '><br><br>'
+                    result += '<div class="container"><h4>'+ course_name +'</h4></div>'                   
                     result += crawler.print_table(table, 'a')
                     print(result)
                     return result
@@ -154,7 +155,7 @@ def detect_intent_texts(crawler, project_id, session_id, texts, language_code, n
                     print("답장 :", ftext)
                     table = crawler.assign_check(course_name,course_name_id)
                     result = ""
-                    result += '<' + course_name + '><br><br>'
+                    result += '<div class="container"><h4>'+ course_name +'</h4></div>'
                     result += crawler.print_table(table, 'a')
                     print(result)
                     return result
@@ -171,7 +172,7 @@ def detect_intent_texts(crawler, project_id, session_id, texts, language_code, n
                 print("답장 :", ftext)
                 table = crawler.grade_check(course_name,course_name_id)
                 result = ""
-                result += '<' + course_name + '><br><br>'
+                result += '<div class="container"><h4>'+ course_name +'</h4></div>'
                 result += crawler.print_table(table, 'g')
                 print(result)
                 return result
@@ -187,7 +188,7 @@ def detect_intent_texts(crawler, project_id, session_id, texts, language_code, n
                 print("답장 :", ftext)
                 table = crawler.notice(course_name,course_name_id)
                 result = ""
-                result += '<' + course_name + '><br><br>'
+                result += '<div class="container"><h4>'+ course_name +'</h4></div>'
                 result += crawler.print_table(table, 'n')
                 print(result)
                 return result
