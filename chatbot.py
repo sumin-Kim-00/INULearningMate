@@ -56,7 +56,7 @@ def detect_intent_texts(crawler, project_id, session_id, texts, language_code, n
     session_client = dialogflow.SessionsClient()
 
     session = session_client.session_path(project_id, session_id) 
-    print("Session path: {}\n".format(session))
+    # print("Session path: {}\n".format(session))
 
     for text in texts:
         text_input = dialogflow.TextInput(text=text, language_code=language_code)
@@ -67,15 +67,15 @@ def detect_intent_texts(crawler, project_id, session_id, texts, language_code, n
             request={"session": session, "query_input": query_input}
         )
         
-        print("=" * 20)
-        print()
-        print("질의 : {}".format(response.query_result.query_text))
-        print(
-            "식별한 인텐트: {} (confidence: {})\n".format(
-                response.query_result.intent.display_name,
-                response.query_result.intent_detection_confidence,
-            )
-        )
+        # print("=" * 20)
+        # print()
+        # print("질의 : {}".format(response.query_result.query_text))
+        # print(
+        #     "식별한 인텐트: {} (confidence: {})\n".format(
+        #         response.query_result.intent.display_name,
+        #         response.query_result.intent_detection_confidence,
+        #     )
+        # )
         
         # 챗봇의 답장
         ftext = response.query_result.fulfillment_text
@@ -95,7 +95,7 @@ def detect_intent_texts(crawler, project_id, session_id, texts, language_code, n
         if  "강의" in ftext:
             if "이번주" in ftext:
                 if in_names:
-                    print("답장 :", ftext)
+                    # print("답장 :", ftext)
                     table = crawler.course_check(course_name,course_name_id)
                     thisweek=crawler.thisweek(course_name, course_name_id)
                     table=crawler.thisweek_course(table, thisweek)
@@ -103,7 +103,7 @@ def detect_intent_texts(crawler, project_id, session_id, texts, language_code, n
                     result = ""
                     result += '<div class="container"><h4>'+ course_name +'</h4></div>'
                     result += crawler.print_table(table, 'c')
-                    print(result)
+                    # print(result)
                     return result
                 else:
                     result="어떤 과목의 이번주 강의 출석 현황을 알고 싶으세요?<br>"
@@ -114,14 +114,14 @@ def detect_intent_texts(crawler, project_id, session_id, texts, language_code, n
                     return result
             else:
                 if in_names: 
-                    print("답장 :", ftext)
+                    # print("답장 :", ftext)
                     table = crawler.course_check(course_name,course_name_id)
                     crawler.not_checked(table)
                     result = ""
                     #result += '<'+ course_name +'><br><br>'
                     result += '<div class="container"><h4>'+ course_name +'</h4></div>'
                     result += crawler.print_table(table, 'c')
-                    print(result)
+                    # print(result)
                     return result
                 else:
                     result="어떤 과목의 강의 출석 현황을 알고 싶으세요?<br>"
@@ -134,14 +134,14 @@ def detect_intent_texts(crawler, project_id, session_id, texts, language_code, n
         if "과제" in ftext:
             if "이번주" in ftext:
                 if in_names:
-                    print("답장 :", ftext)
+                    # print("답장 :", ftext)
                     table = crawler.assign_check(course_name,course_name_id)
                     thisweek=crawler.thisweek(course_name, course_name_id)
                     table=crawler.thisweek_course(table, thisweek)
                     result = ""
                     result += '<div class="container"><h4>'+ course_name +'</h4></div>'                   
                     result += crawler.print_table(table, 'a')
-                    print(result)
+                    # print(result)
                     return result
                 else:
                     result="어떤 과목의 이번주 과제 제출 현황을 알고 싶으세요?<br>"
@@ -152,12 +152,12 @@ def detect_intent_texts(crawler, project_id, session_id, texts, language_code, n
                     return result
             else:
                 if in_names:
-                    print("답장 :", ftext)
+                    # print("답장 :", ftext)
                     table = crawler.assign_check(course_name,course_name_id)
                     result = ""
                     result += '<div class="container"><h4>'+ course_name +'</h4></div>'
                     result += crawler.print_table(table, 'a')
-                    print(result)
+                    # print(result)
                     return result
                 else:
                     result="어떤 과목의 과제 제출 현황을 알고 싶으세요?<br>"
@@ -169,12 +169,12 @@ def detect_intent_texts(crawler, project_id, session_id, texts, language_code, n
 
         if "성적" in ftext:
             if in_names:
-                print("답장 :", ftext)
+                # print("답장 :", ftext)
                 table = crawler.grade_check(course_name,course_name_id)
                 result = ""
                 result += '<div class="container"><h4>'+ course_name +'</h4></div>'
                 result += crawler.print_table(table, 'g')
-                print(result)
+                # print(result)
                 return result
             else:
                 result="어떤 과목의 성적을 알고 싶으세요?<br>"
@@ -185,12 +185,12 @@ def detect_intent_texts(crawler, project_id, session_id, texts, language_code, n
                 return result
         elif "공지" in ftext:
             if in_names:
-                print("답장 :", ftext)
+                # print("답장 :", ftext)
                 table = crawler.notice(course_name,course_name_id)
                 result = ""
                 result += '<div class="container"><h4>'+ course_name +'</h4></div>'
                 result += crawler.print_table(table, 'n')
-                print(result)
+                # print(result)
                 return result
             else:
                 result="어떤 과목의 공지를 알고 싶으세요?<br>"
@@ -200,7 +200,7 @@ def detect_intent_texts(crawler, project_id, session_id, texts, language_code, n
                 result += '</div>'
                 return result
         else:
-            print("답장 :", ftext)
+            # print("답장 :", ftext)
             return ftext
 
 

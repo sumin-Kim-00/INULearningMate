@@ -66,7 +66,7 @@ options.add_argument("disable-gpu")
 
 
 def home(request):
-    print(request.session.session_key)
+    # print(request.session.session_key)
     context = {}
 
     # 아이디, 비밀번호가 담긴 쿠키가 존재할 때 - 강의를 찾아 chathome.html으로 바로 반환함
@@ -82,8 +82,8 @@ def home(request):
         c.login(user, pw)
 
         names = c.find_course_name()
-        print(names)
-        print()
+        # print(names)
+        # print()
 
         context = {
             'username': user,
@@ -126,11 +126,11 @@ def login(request):
         # 자동 로그인 체크 시
         if request.POST.getlist('autologin'):
             autologin = True
-            print("autologin =", autologin)
+            # print("autologin =", autologin)
 
             names = c.find_course_name()
-            print(names)
-            print()
+            # print(names)
+            # print()
             context['courses'] = names
 
             # request.session.set_expiry(2592000)
@@ -145,11 +145,11 @@ def login(request):
         # 자동 로그인 체크 X
         autologin = False
 
-        print("autologin =", autologin)
+        # print("autologin =", autologin)
 
         names = c.find_course_name()
-        print(names)
-        print()
+        # print(names)
+        # print()
         context['courses'] = names
 
         return render(request, 'chathome.html', context)
@@ -176,10 +176,10 @@ def chat(request):
     chatinput = request.GET['chatinput']
     chat.append(chatinput)
 
-    print(chat)
+    # print(chat)
 
     names = c.find_course_name()
-    print(names)
+    # print(names)
     course_name_id=c.find_course_name_id()
     
     chat = chatbot.detect_intent_texts(c, DIALOGFLOW_PROJECT_ID, SESSION_ID, chat, DIALOGFLOW_LANGUAGE_CODE, names, course_name_id)
@@ -244,7 +244,7 @@ def speechtottext(request):
     
     except OSError as e:
         speechtext = "연결 가능한 마이크가 없습니다."
-        print(speechtext)
+        # print(speechtext)
 
         context = {
             'speechtext': speechtext,

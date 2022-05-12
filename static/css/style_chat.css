@@ -438,7 +438,7 @@ tr td:first-child{
   }
 
 
-h4 {
+/* h4 {
     margin-bottom: 9px;
     color: black;
     background: linear-gradient(120deg, #f7d796 0%, #f7d796 100%);
@@ -447,4 +447,9 @@ h4 {
     background-position: 0 60%;
     display: inline-block;
     margin-top: 5px;
+} */
+
+h4 {
+    margin-bottom: 6px;
+    margin-top: 6px;
 }
